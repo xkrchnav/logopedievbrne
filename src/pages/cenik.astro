@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Header from '../components/header/Header.astro'
+
+const cenikData = {
+  title: 'Ceník',
+  topBar: {
+    address: 'info@logopedievbrne.cz',
+    phone: '737 365 338',
+    hours: 'Po - Pá: 8:00 - 17:30'
+  },
+  pricing: [
+    { description: 'Vstupní a navazující konzultace krátká (30 min.), např. u dg. dyslalie, logopedické poradenství', price: '600 Kč/30 min.' },
+    { description: 'Vstupní a navazující Konzultace dlouhá (60 – 120 min)', price: '1200 Kč/60 min.' },
+    { description: 'Zpráva z konzultace, max 2 str. A4', price: '500 Kč' },
+    { description: 'Shrnující zpráva z logopedie na vyžádání, slouží jako podklad pro další odborná vyšetření', price: '1000 Kč' },
+    { description: 'Storno poplatek za předem neomluvený termín logopedie z jiných než zdravotních důvodů', price: '500 Kč' }
+  ],
+  paymentInfo: 'Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.',
+  notes: [
+    'Neposkytuji zdravotní péči dle zákona č. 372/2011 Sb., O zdravotních službách a podmínkách jejich poskytováním v platném znění.',
+    'Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.'
+  ]
+}
+---
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{cenikData.title}</title>
+</head>
+<body>
+    <Header title="Ceník" description="Ceník služeb" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
+
+    <main class="container">
+        <section class="pricing">
+            <div class="container">
+                <h2>Ceník</h2>
+                <p>{cenikData.paymentInfo}</p>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Popis</th>
+                            <th>Maximální cena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cenikData.pricing.map((item, j) => (
+                            <tr key={j}>
+                                <td>{item.description}</td>
+                                <td>{item.price}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <hr />
+                <p>Pozn.:</p>
+                <ul>
+                    {cenikData.notes.map((note, j) => (
+                        <li key={j}>
+                            <span class="icon-maps-and-flags"></span>{note}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <h4>Logopedie Brno</h4>
+                    <p>Mgr. Jitka Rotscheinová</p>
+                    <ul>
+                        <li><a href="/">Úvod</a></li>
+                        <li><a href="/o-mne">O mně</a></li>
+                        <li><a href="/co-nabízím">Co nabízím</a></li>
+                        <li><a href="/vzdelani">Vzdělání</a></li>
+                        <li><a href="/ceník">Ceník</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt:</h4>
+                    <p>Mgr. Jitka Rotscheinová<br>Logoped, speciální pedagog</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Sledujte nás:</h4>
+                    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

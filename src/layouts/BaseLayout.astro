@@ -1,0 +1,13 @@
+---
+import '../global.css'
+
+interface LayoutProps {
+  title: string
+  description?: string
+  showHeader: boolean
+  showFooter: boolean
+  children: any
+}
+export const Mkdwn = ({Content}: {Content: any}) => {
+  return <Content />
+}

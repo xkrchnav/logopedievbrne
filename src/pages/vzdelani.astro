@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Header from '../components/header/Header.astro'
+
+const vzdelaniData = {
+  title: 'Vzdělání',
+  topBar: {
+    address: 'info@logopedievbrne.cz',
+    phone: '737 365 338',
+    hours: 'Po - Pá: 8:00 - 17:30'
+  },
+  education: [
+    { degree: 'Bakalářské', field: 'Speciální pedagogika', exam: 'integrativní speciální pedagogika, logopedie, surdopedie', year: '2008' },
+    { degree: 'Magisterské', field: 'Speciální pedagogika', exam: 'speciální pedagogika, logopedie, surdopedie, specifické poruchy učení, pedagogika/psychologie', year: '2011' },
+    { title: 'Další absolvované odborné semináře a přednášky', items: [
+      { year: '2007', description: 'Trénink fonematického uvědomování podle Elkonina - Doc. PhDr. Marína Mikulajová, CSc.' },
+      { year: '2007', description: 'Metodika dysfázie - PaedDr. Dana Kutálková' },
+      { year: '2008', description: 'Deficity dílčích funkcí, Brigitte Sindelar - Doc.PhDr. Věra Pokorná, CSc.' },
+      { year: '2010', description: 'Znak do řeči - Mgr. L. Kubová, PhDr. R. Škaloudová' },
+      { year: '2012', description: 'Myofunkční terapie I. - Mgr. Jitka Kaulfuss, MUDr.R.Katra, MUDr. M.Koťová Ph.D.' },
+      { year: '2012', description: 'Orofaciální stimulace I. - Mgr. Jitka Kaulfuss' },
+      { year: '2012', description: 'Dyslalie - PaedDr. Eva Škodová' },
+      { year: '2012', description: 'Opožděný vývoj řeči - doc. MUDr. Mojmír Lejska, CSc' },
+      { year: '2013', description: 'X. afaziologické symposium - více odborníků v oboru' },
+      { year: '2013', description: 'Rozvoj komunikace u dětí s PAS - Mgr. Romana Straussová' },
+      { year: '2013', description: 'Myofunkční poruchy z pohledu dysfunkce jazyka - Logopedická diagnostika a terapia - PhDr. Zuzana Jandová' },
+      { year: '2013', description: 'Afázie I. - prim.PaedDr. M.Čecháčková' },
+      { year: '2013', description: 'Dyslalie s pohybem a prvky Myofunkční terapie - Mgr. Jitka Kaulfussová' },
+      { year: '2013', description: 'Problematika komunikace u osob s PAS - PhDr. K.Thorová, Ph.D., PaedDr. V.Čadilová' },
+      { year: '2014', description: 'Poruchy vývoje řeči - Vývojová dysfázie - soubor přednášek - Specializační studium logopedů ve školství, I.semestr - doc. MUDr. Hana Ošlejšková Ph.D., Mgr. Jana Pejčochová, Doc. PaedDr. Jiřina Klenková, Ph.D., PhDr. Barbora Bočková, Ph.D.' },
+      { year: '2014', description: 'Afázie II. - prim.PaedDr. M.Čecháčková' },
+      { year: '2014', description: 'Úvodní kurz do metody R. Feuersteina - PaedDr. Eva Váňová' },
+      { year: '2014', description: 'Poruchy řeči a sluchu z pozice foniatrie, klinické logopedie a psychiatrie - prof. MUDr. Ivo Paclt, CSc.' },
+      { year: '2015', description: 'Orofaciálna a bazálna stimulácia u detí s psychomotorickým oneskorením v ranom veku - PaedDr. A. Fabianová, PhDr. Z. Jandová' },
+      { year: '2015', description: 'Dyslalie - metodiky reedukace hlásek - PaedDr. Dana Kutálková' },
+      { year: '2016', description: 'Rozvoj obsahové stránky řeči - PaedDr. B.Housarová, Ph.D., Mgr. Michaela Voldřichová' },
+      { year: '2016', description: 'Praktické využití dotykových tabletů pro Alternativní komunikaci a logopedii - Lenka Říhová' },
+      { year: '2016', description: 'Komunikační profil Matrix - PhDr. Jana Pešková, Ph.D., Kristýna Hemzáčková' },
+      { year: '2016', description: 'Terapie orální pozice - Mgr. Barbora Červenková' },
+      { year: '2017', description: 'Základy komunikace s vizuální oporou u klientů s PAS - Mgr. Klára Geislerová' },
+      { year: '2017', description: 'Pražský logopedický den 2017 - více odborníků v oboru' },
+      { year: '2017', description: 'Autismus v praxi - 3. ročník kazuistické konference - tuzemští a zahraniční odborníci oboru' },
+      { year: '2018', description: 'Aktivace energetických systémů člověka a jejich užití v logopedické praxi - Mgr. Petra Tabačíková' },
+      { year: '2018', description: 'Pražský logopedický den 2018 - konference k problematice dítěte s NKS ve vzdělávání - více odborníků v oboru' },
+      { year: '2018', description: 'Autismus v praxi - 4. ročník kazuistické konference - tuzemští a zahraniční odborníci oboru' },
+      { year: '2019', description: 'Prvky senzorické integrační terapie v logopedické praxi - Mgr. Barbora Červenková' },
+      { year: '2019', description: 'Pokročilé dechové a fonační techniky doplněné stimulací akupresurních drah čakrového systému - Mgr. Petra Tabačíková' },
+      { year: '2019', description: 'Mutismus - Pa­edDr. Dana Kutálková' },
+      { year: '2019', description: 'Základní postupy v aplikované behaviorální analýze - Mgr. Zuzana Maštenová, BCBA' },
+      { year: '2019', description: 'Úvod do senzorické intergrace pro pomáhající profese v sociálních službách - Paedr. Jana Hrčová, Ph.D' },
+      { year: '2020', description: 'Intuitivní rodičovství jeho poruchy a možnosti prevence a intervence - Mgr. Kateřina Šilhánová' },
+      { year: '2020', description: 'Sexuálita lidí s poruchou autistického spektra - organizace Freya' },
+      { year: '2022', description: 'Specifika smyslového vnímání u osob s poruchami autistického spektra a strategie jeho rozvoje - Paedr. Jana Hrčová, Ph.D' },
+      { year: '2022', description: 'Zahájení studia tradiční čínské medicíny - MUDr. Alexandra Vosátková' },
+      { year: '2023', description: 'Motýlí masáže, Ing. Eva Kopasová, seminář zaměřený na využití vonných esencí nejen v porodnictví' },
+      { year: '2024', description: '\"Voňavé kouzlo\" kytičkového dětství, Ing. Eva Kopasová, seminář zaměřený na harmonický vývoj dětí a jejich duševní zdraví' }
+    ]}
+  ]
+}
+---
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{vzdelaniData.title}</title>
+</head>
+<body>
+    <Header title="Vzdělání" description="Vzdělání logopedy" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
+
+    <main class="container">
+        <section class="about">
+            <div class="container">
+                <h1>Vzdělání v oboru</h1>
+
+                <h2>Vysokoškolské vzdělání</h2>
+                <ul>
+                    <li><span>Typ studia</span>{vzdelaniData.education[0].degree}</li>
+                    <li><span>Obor</span>{vzdelaniData.education[0].field}</li>
+                    <li><span>Zkouška</span>{vzdelaniData.education[0].exam}</li>
+                    <li><span>Rok</span>{vzdelaniData.education[0].year}</li>
+                </ul>
+                <ul>
+                    <li><span>Typ studia</span>{vzdelaniData.education[1].degree}</li>
+                    <li><span>Obor</span>{vzdelaniData.education[1].field}</li>
+                    <li><span>Zkouška</span>{vzdelaniData.education[1].exam}</li>
+                    <li><span>Rok</span>{vzdelaniData.education[1].year}</li>
+                </ul>
+
+                <h2>Další absolvované odborné semináře a přednášky</h2>
+                <ul>
+                    {vzdelaniData.education[2].items.map((item, j) => (
+                        <li key={j}>
+                            <span>{item.year}</span>{item.description}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <h4>Logopedie Brno</h4>
+                    <p>Mgr. Jitka Rotscheinová</p>
+                    <ul>
+                        <li><a href="/">Úvod</a></li>
+                        <li><a href="/o-mne">O mně</a></li>
+                        <li><a href="/co-nabízím">Co nabízím</a></li>
+                        <li><a href="/vzdelani">Vzdělání</a></li>
+                        <li><a href="/ceník">Ceník</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt:</h4>
+                    <p>Mgr. Jitka Rotscheinová<br>Logoped, speciální pedagog</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Sledujte nás:</h4>
+                    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
