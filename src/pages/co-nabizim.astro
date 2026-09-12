@@ -1,45 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const coNabizimData = {
-  title: 'Co nabízím',
-  services: [
+const services = [
     'Individuální přístup založený na dlouholetých praktických zkušenostech a teoretických poznatků v oboru logopedie a speciální pedagogiky',
-    'Logopedická intervence pro děti a dospělé vždy přizpůsobená aktuálním možnostam a dispozicím klienta s trpělivým a osobním přístupem v domácím prostředí mé pracovny',
+    'Logopedická intervence pro děti a dospělé vždy přizpůsobenou aktuálním možnostem a dispozicím klienta s trpělivým a osobním přístupem v domácím prostředí mé pracovny',
     'Nácvik fyziologické výslovnosti hlásek - dyslalie (porucha artikulace)',
     'Nácvik tvoření (gramaticky správných) vět',
     'Logopedické poradenství - konzultace (jednorázová, dlouhodobá)',
     'Orofaciální stimulace pasivní (masáž obličeje)',
     'Orofaciální stimulace aktivní - rozvoj hybnosti rtů, čelisti a jazyka s využitím speciálních logopedických pomůcek i bez, proškolení pro práci s dítětem v domácím prostředí',
     'Dechová, fonační a artikulační cvičení',
-    'Nácvík komunikace s využitím Znaku do řeči',
-    'Nácvík komunikace s využitím obrázkové komunikace, včetně VOKS (PECS)',
-    'Vedení a způsob využití zážitkového deníku pro podporu rozvoje komunikačních schopností',
+    'Nácvik komunikace s využitím Znaku do řeči',
+    'Nácvik komunikace s využitím obrázkové komunikace, včetně VOKS (PECS)',
+    'Vedení a způsob využití zážitkového deníku pro podporu rozvoje komunikační schopnosti',
     'Výrobu pomůcek pro domácí použití dle individuálních potřeb a zájmů dítěte',
     'Četnost logopedických intervencí dle potřeb klienta',
     'Pracovní materiál pro domácí použití např. cvičná slova, obrázky aj.',
     'Poradenství v oblasti rozvoje jemné, hrubé motoriky',
+    'Poradenství v oblasti rozvoje předpočetních a časoprostorových představ',
+    'Poradenství v oblasti rozvoje předčtenářských dovedností',
+    'Poradenství v oblasti rozvoje logického myšlení ve spojení s rozvojem slovní zásoby s využitím různých didaktických pomůcek',
+    'Poradenství v oblasti rozvoje grafomotoriky',
     'Psychologickou podporu při výchově a vzdělávání dítěte s postižením',
     'Přehled o možnostech využití počítačových aplikací (v PC, tabletu, mobilu) pro podporu rozvoje komunikačních schopností dítěte',
     'Poradenství v oblasti specifických poruch učení dyslexie, dysgrafie, dyskalkulie',
     'Přednášková činnost v oboru logopedie',
     'Na přání klienta nabízím zdarma "Kytičkový rituál" (délka asi 3 min. Jedná se o naladění klienta na spolupráci s využitím čistě přírodní květové esence.)',
-    'Malé občerstvení při každé návštěvě'
-  ]
-}
+    'Malé občerstvení při každé návštěvě',
+]
 ---
-<BaseLayout
-    title={coNabizimData.title}
-    description="Služby logopedy"
-    pageTitle="Co nabízím"
-    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Co nabízím' }]}
->
-    <section class="services">
+<BaseLayout title="Co nabízím" description="Služby logopedy">
+    <section
+        class="sppb-section page-hero page-hero--small"
+        style="background-image:url('/images/2024/02/04/co-nabizim_crop.jpg');"
+    >
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
-            <ul class="service-list">
-                {coNabizimData.services.map((item, j) => (
-                    <li key={j}>{item}</li>
+            <div class="page-hero__box">
+                <h2 class="page-hero__title">Co nabízím</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="sppb-section page-text-section">
+        <div class="container">
+            <ul class="icon-list">
+                {services.map((item) => (
+                    <li><span class="icon-maps-and-flags" aria-hidden="true"></span>{item}</li>
                 ))}
             </ul>
         </div>

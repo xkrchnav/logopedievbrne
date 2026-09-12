@@ -1,46 +1,69 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const kontaktData = {
-  title: 'Kontakt',
-}
+const boxes = [
+    {
+        icon: 'fas fa-map-marker-alt',
+        label: 'Adresa',
+        lines: ['Sejkorova 18', '636 00 Brno'],
+        href: null,
+    },
+    {
+        icon: 'fas fa-envelope',
+        label: 'E-mail',
+        lines: ['info@logopedievbrne.cz'],
+        href: 'mailto:info@logopedievbrne.cz',
+    },
+    {
+        icon: 'fas fa-phone',
+        label: 'Telefon',
+        lines: ['+420 737 365 338'],
+        href: 'tel:737365338',
+    },
+]
 ---
 <BaseLayout
-    title={kontaktData.title}
+    title="Kontakt"
     description="Kontaktní informace"
     pageTitle="Kontakt"
+    pageTitleTag="h2"
     breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Kontakt' }]}
 >
-    <section class="contact">
+    <section class="sppb-section contact-map">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
-                <div>
-                    <h2 style="margin-bottom: 20px;">Kontakt</h2>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2607.4062438440637!2d16.653536513242667!3d49.19285257126027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712953626c3be51%3A0x79647665290a90f6!2zTG9nb3BlZGllIHYgZG9tw6Fjw61tIHByb3N0emllZMOt!5e0!3m2!1sen!2scz!4v1708619991897!5m2!1sen!2scz"
-                        width="100%"
-                        height="450"
-                        style="border:0; border-radius: 4px;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                    <p style="margin-top: 15px; color: #666;">Tramvaj č. 8, zastávka Krásného, pak 10 min. pěšky. Nebo tramvaj č. 8 zastávka Bělohorská, pak autobus č. 55, nebo č. 75 zastávka Podlomní, pak 2 min. pěšky.</p>
-                    <p style="margin-top: 10px; font-weight: 700;">Těším se na Vaši návštěvu.</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 20px; color: var(--maincolor);">Kontaktní údaje</h4>
-                    <address style="font-style: normal; line-height: 2;">
-                        <strong style="display: block; margin-bottom: 5px; color: var(--heading-color);">Mgr. Jitka Rotscheinová</strong>
-                        Sejkorova 18<br>
-                        636 00 Brno<br>
-                        <br>
-                        <abbr title="Telephone">Tel.:</abbr> +420 737 365 338<br>
-                        <abbr title="Email">E-mail:</abbr> <a href="mailto:info@logopedievbrne.cz">info@logopedievbrne.cz</a><br>
-                        <abbr title="ICO">IČO:</abbr> 68629788
-                    </address>
-                    <p style="margin-top: 20px; color: #666;">Pokud hovor nepřijímám, pravděpodobně zrovna pracuji s klientem a ozvu se vám později (lze také poslat SMS či e-mail). Služby poskytuji pouze po předchozím telefonickém objednání. Čas konzultace dle vzájemné dohody.</p>
-                </div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2607.4062438440637!2d16.653536513242667!3d49.19285257126027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712953626c3be51%3A0x79647665290a90f6!2zTG9nb3BlZGllIHYgZG9tw6Fjw61tIHByb3N0xZllZMOt!5e0!3m2!1sen!2scz!4v1708619991897!5m2!1sen!2scz"
+                width="100%"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <p>Tramvaj č. 8, zastávka Krásného, pak 10 min. pěšky. Nebo tramvaj č. 8 zastávka Bělohorská, pak autobus č. 55, nebo č. 75 zastávka Podlomní, pak 2 min. pěšky.</p>
+            <br />
+            <strong>Těším se na Vaši návštěvu.</strong>
+        </div>
+    </section>
+
+    <section class="sppb-section" style="padding: 55px 0 60px;">
+        <div class="container">
+            <div class="contact-boxes">
+                {boxes.map((box) => (
+                    <div class="contact-box__single">
+                        <span class="sppb-icon-container" aria-hidden="true">
+                            <i class={box.icon}></i>
+                        </span>
+                        <div class="sppb-media-content">
+                            <h2 class="sppb-feature-box-title"><a href={box.href ?? '#'}>{box.label}</a></h2>
+                            <div class="sppb-addon-text">
+                                {box.lines.map((line) => (
+                                    <p>{box.href ? <a href={box.href}>{line}</a> : line}</p>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     </section>

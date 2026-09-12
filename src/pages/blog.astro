@@ -12,70 +12,57 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Blog' }]}
 >
     <section class="blog">
-        <div class="container-inner">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    {posts.map((post) => (
-                        <article class="article" itemscope itemtype="https://schema.org/BlogPosting">
-                            {post.data.heroImage && (
-                                <div class="article-intro-image float-left">
-                                    <picture class="responsive-image">
-                                        <source type="image/webp" srcset={post.data.heroImage.replace(/\.(png|jpg)$/, '.webp')} />
-                                        <source type="image/png" srcset={post.data.heroImage} />
-                                        <img width="512" height="381" src={post.data.heroImage} alt={post.data.title} itemprop="thumbnailUrl" decoding="async" loading="lazy" />
-                                    </picture>
-                                </div>
-                            )}
+        <div class="container">
+            <div class="blog com-content-category-blog">
+                <div class="article-list cols-3">
+                    <div class="row">
+                        {posts.map((post) => (
+                            <div class="col-lg-4">
+                                <div class="article" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+                                    {post.data.heroImage && (
+                                        <div class="article-intro-image float-left">
+                                            <a href={`/blog/${post.id}`}>
+                                                <img
+                                                    width="512"
+                                                    height="381"
+                                                    src={post.data.heroImage}
+                                                    alt={post.data.title}
+                                                    itemprop="thumbnailUrl"
+                                                    decoding="async"
+                                                    loading="lazy"
+                                                />
+                                            </a>
+                                        </div>
+                                    )}
 
-                            <div class="article-body">
-                                <div class="article-header">
-                                    <h2>
-                                        <a href={`/blog/${post.id}`}>
-                                            {post.data.title}
-                                        </a>
-                                    </h2>
-                                </div>
+                                    <div class="article-body">
+                                        <div class="article-header">
+                                            <h2>
+                                                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                                            </h2>
+                                        </div>
 
-                                <div class="article-info">
-                                    <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
-                                        <time datetime={post.data.pubDate.toISOString()}>
-                                            {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
-                                        </time>
-                                    </span>
-                                </div>
+                                        <div class="article-info">
+                                            <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
+                                                <time datetime={post.data.pubDate.toISOString()}>
+                                                    {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                                </time>
+                                            </span>
+                                        </div>
 
-                                <div class="article-introtext">
-                                    <p>{post.data.description}</p>
+                                        <div class="article-introtext">
+                                            <p>{post.data.description}</p>
+                                        </div>
+
+                                        <div class="readmore">
+                                            <a href={`/blog/${post.id}`} itemprop="url" aria-label={`Číst dál … ${post.data.title}`}>
+                                                Číst dál …
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="readmore">
-                                <a href={`/blog/${post.id}`} itemprop="url" aria-label={`Číst dál ${post.data.title}`}>Číst dál &hellip;</a>
-                            </div>
-                        </article>
-                    ))}
-
-                    <div class="article-list grid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">« Předchozí</a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Další »</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

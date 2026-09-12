@@ -1,33 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const cenikData = {
-  title: 'Ceník',
-  pricing: [
-    { description: 'Vstupní a navazující konzultace krátká (30 min.), např. u dg. dyslalie, logopedické poradenství', price: '600 Kč/30 min.' },
-    { description: 'Vstupní a navazující Konzultace dlouhá (60 – 120 min)', price: '1200 Kč/60 min.' },
-    { description: 'Zpráva z konzultace, max 2 str. A4', price: '500 Kč' },
-    { description: 'Shrnující zpráva z logopedie na vyžádání, slouží jako podklad pro další odborná vyšetření', price: '1000 Kč' },
-    { description: 'Storno poplatek za předem neomluvený termín logopedie z jiných než zdravotních důvodů', price: '500 Kč' }
-  ],
-  paymentInfo: 'Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.',
-  notes: [
+const pricing = [
+    {
+        description: 'Vstupní a navazující konzultace krátká (30 min.), např. u dg. dyslalie, logopedické poradenství',
+        price: '600 Kč/30 min.',
+    },
+    {
+        description: 'Vstupní a navazující konzultace dlouhá (60 – 120. min)',
+        price: '1200 Kč/60 min.',
+    },
+    {
+        description: 'Zpráva z konzultace, max 2 str. A4',
+        price: '500 Kč',
+    },
+    {
+        description: 'Zpráva z konzultace: jedná se o podrobnou zprávu pro Vaši osobní potřebu, o průběhu aktuální logopedické intervence, kde Vám např. popíšu jaké pomůcky jsme použili a za jakým účelem aj. Tato zpráva Vám poslouží jako návod pro práci s dítětem doma případně ve školském zařízení, ale nebude podkladem pro žádná další odborná vyšetření.',
+        price: '',
+    },
+    {
+        description: 'Shrnující zpráva z logopedie na vyžádání, slouží jako podklad pro další odborná vyšetření',
+        price: '1000 Kč',
+    },
+    {
+        description: 'Storno poplatek za předem neomluvený termín logopedie z jiných než zdravotních důvodů',
+        price: '500 Kč',
+    },
+]
+
+const notes = [
     'Neposkytuji zdravotní péči dle zákona č. 372/2011 Sb., O zdravotních službách a podmínkách jejich poskytováním v platném znění.',
-    'Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.'
-  ]
-}
+    'Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.',
+]
 ---
-<BaseLayout
-    title={cenikData.title}
-    description="Ceník služeb"
-    pageTitle="Ceník"
-    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Ceník' }]}
->
-    <section class="pricing">
+<BaseLayout title="Ceník" description="Ceník služeb">
+    <section class="sppb-section" style="padding: 120px 0 90px;">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Ceník</h2>
-            <p style="text-align: center; max-width: 900px; margin: 0 auto 30px;">{cenikData.paymentInfo}</p>
-            <table class="pricing-table">
+            <div class="cenik-valid">platný od 1.3.2023</div>
+            <h2 class="cenik-title">Ceník</h2>
+            <p class="cenik-intro">Uvedené ceny jsou orientační tzn. stanovení konečné částky je individuální. V ceně je vždy zohledněna náročnost spolupráce s klientem, rozsah obtíží, frekvence návštěv, vzájemná domluva a množství pracovních materiálů předaných pro domácí použití.</p>
+        </div>
+    </section>
+
+    <section class="sppb-section" style="padding: 75px 0 28px;">
+        <div class="container">
+            <table class="pricing-table sppb-table">
                 <thead>
                     <tr>
                         <th>Popis</th>
@@ -35,19 +52,21 @@ const cenikData = {
                     </tr>
                 </thead>
                 <tbody>
-                    {cenikData.pricing.map((item, j) => (
-                        <tr key={j}>
+                    {pricing.map((item) => (
+                        <tr>
                             <td>{item.description}</td>
                             <td>{item.price}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <hr style="max-width: 900px; margin: 40px auto; border-color: #ddd;" />
-            <p style="max-width: 900px; margin: 0 auto;">Pozn.:</p>
-            <ul style="max-width: 900px; margin: 0 auto; padding-left: 20px;">
-                {cenikData.notes.map((note, j) => (
-                    <li key={j}><span>{note}</span></li>
+
+            <hr />
+            <p>Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.</p>
+            <h4>Pozn.:</h4>
+            <ul class="icon-list">
+                {notes.map((note) => (
+                    <li><span class="icon-maps-and-flags" aria-hidden="true"></span>{note}</li>
                 ))}
             </ul>
         </div>

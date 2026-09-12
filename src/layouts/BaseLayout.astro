@@ -16,6 +16,7 @@ interface LayoutProps {
   showHeader?: boolean
   showFooter?: boolean
   pageTitle?: string
+  pageTitleTag?: 'h1' | 'h2' | 'h3'
   breadcrumbs?: Breadcrumb[]
   bodyClass?: string
 }
@@ -26,9 +27,12 @@ const {
   showHeader = true,
   showFooter = true,
   pageTitle,
+  pageTitleTag = 'h1',
   breadcrumbs = [],
   bodyClass = '',
 } = Astro.props;
+
+const PageTitleTag = pageTitleTag;
 
 const bodyClasses = [
   'site',
@@ -91,7 +95,7 @@ const bodyClasses = [
                             {pageTitle && (
                                 <div class="sp-page-title">
                                     <div class="container">
-                                        <h1 class="sp-page-title-heading">{pageTitle}</h1>
+                                        <PageTitleTag class="sp-page-title-heading">{pageTitle}</PageTitleTag>
                                         {breadcrumbs.length > 0 && (
                                             <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
                                                 <ol class="mod-breadcrumbs breadcrumb px-3 py-2">

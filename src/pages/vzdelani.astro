@@ -1,90 +1,100 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const vzdelaniData = {
-  title: 'Vzdělání',
-  education: [
-    { degree: 'Bakalářské', field: 'Speciální pedagogika', exam: 'integrativní speciální pedagogika, logopedie, surdopedie', year: '2008' },
-    { degree: 'Magisterské', field: 'Speciální pedagogika', exam: 'speciální pedagogika, logopedie, surdopedie, specifické poruchy učení, pedagogika/psychologie', year: '2011' },
-    { title: 'Další absolvované odborné semináře a přednášky', items: [
-      { year: '2007', description: 'Trénink fonematického uvědomování podle Elkonina - Doc. PhDr. Marína Mikulajová, CSc.' },
-      { year: '2007', description: 'Metodika dysfázie - PaedDr. Dana Kutálková' },
-      { year: '2008', description: 'Deficity dílčích funkcí, Brigitte Sindelar - Doc.PhDr. Věra Pokorná, CSc.' },
-      { year: '2010', description: 'Znak do řeči - Mgr. L. Kubová, PhDr. R. Škaloudová' },
-      { year: '2012', description: 'Myofunkční terapie I. - Mgr. Jitka Kaulfuss, MUDr.R.Katra, MUDr. M.Koťová Ph.D.' },
-      { year: '2012', description: 'Orofaciální stimulace I. - Mgr. Jitka Kaulfuss' },
-      { year: '2012', description: 'Dyslalie - PaedDr. Eva Škodová' },
-      { year: '2012', description: 'Opožděný vývoj řeči - doc. MUDr. Mojmír Lejska, CSc' },
-      { year: '2013', description: 'X. afaziologické symposium - více odborníků v oboru' },
-      { year: '2013', description: 'Rozvoj komunikace u dětí s PAS - Mgr. Romana Straussová' },
-      { year: '2013', description: 'Myofunkční poruchy z pohledu dysfunkce jazyka - Logopedická diagnostika a terapia - PhDr. Zuzana Jandová' },
-      { year: '2013', description: 'Afázie I. - prim.PaedDr. M.Čecháčková' },
-      { year: '2013', description: 'Dyslalie s pohybem a prvky Myofunkční terapie - Mgr. Jitka Kaulfussová' },
-      { year: '2013', description: 'Problematika komunikace u osob s PAS - PhDr. K.Thorová, Ph.D., PaedDr. V.Čadilová' },
-      { year: '2014', description: 'Poruchy vývoje řeči - Vývojová dysfázie - soubor přednášek - Specializační studium logopedů ve školství, I.semestr - doc. MUDr. Hana Ošlejšková Ph.D., Mgr. Jana Pejčochová, Doc. PaedDr. Jiřina Klenková, Ph.D., PhDr. Barbora Bočková, Ph.D.' },
-      { year: '2014', description: 'Afázie II. - prim.PaedDr. M.Čecháčková' },
-      { year: '2014', description: 'Úvodní kurz do metody R. Feuersteina - PaedDr. Eva Váňová' },
-      { year: '2014', description: 'Poruchy řeči a sluchu z pozice foniatrie, klinické logopedie a psychiatrie - prof. MUDr. Ivo Paclt, CSc.' },
-      { year: '2015', description: 'Orofaciálna a bazálna stimulácia u detí s psychomotorickým oneskorením v ranom veku - PaedDr. A. Fabianová, PhDr. Z. Jandová' },
-      { year: '2015', description: 'Dyslalie - metodiky reedukace hlásek - PaedDr. Dana Kutálková' },
-      { year: '2016', description: 'Rozvoj obsahové stránky řeči - PaedDr. B.Housarová, Ph.D., Mgr. Michaela Voldřichová' },
-      { year: '2016', description: 'Praktické využití dotykových tabletů pro Alternativní komunikaci a logopedii - Lenka Říhová' },
-      { year: '2016', description: 'Komunikační profil Matrix - PhDr. Jana Pešková, Ph.D., Kristýna Hemzáčková' },
-      { year: '2016', description: 'Terapie orální pozice - Mgr. Barbora Červenková' },
-      { year: '2017', description: 'Základy komunikace s vizuální oporou u klientů s PAS - Mgr. Klára Geislerová' },
-      { year: '2017', description: 'Pražský logopedický den 2017 - více odborníků v oboru' },
-      { year: '2017', description: 'Autismus v praxi - 3. ročník kazuistické konference - tuzemští a zahraniční odborníci oboru' },
-      { year: '2018', description: 'Aktivace energetických systémů člověka a jejich užití v logopedické praxi - Mgr. Petra Tabačíková' },
-      { year: '2018', description: 'Pražský logopedický den 2018 - konference k problematice dítěte s NKS ve vzdělávání - více odborníků v oboru' },
-      { year: '2018', description: 'Autismus v praxi - 4. ročník kazuistické konference - tuzemští a zahraniční odborníci oboru' },
-      { year: '2019', description: 'Prvky senzorické integrační terapie v logopedické praxi - Mgr. Barbora Červenková' },
-      { year: '2019', description: 'Pokročilé dechové a fonační techniky doplněné stimulací akupresurních drah čakrového systému - Mgr. Petra Tabačíková' },
-      { year: '2019', description: 'Mutismus - Pa­edDr. Dana Kutálková' },
-      { year: '2019', description: 'Základní postupy v aplikované behaviorální analýze - Mgr. Zuzana Maštenová, BCBA' },
-      { year: '2019', description: 'Úvod do senzorické intergrace pro pomáhající profese v sociálních službách - Paedr. Jana Hrčová, Ph.D' },
-      { year: '2020', description: 'Intuitivní rodičovství jeho poruchy a možnosti prevence a intervence - Mgr. Kateřina Šilhánová' },
-      { year: '2020', description: 'Sexuálita lidí s poruchou autistického spektra - organizace Freya' },
-      { year: '2022', description: 'Specifika smyslového vnímání u osob s poruchami autistického spektra a strategie jeho rozvoje - Paedr. Jana Hrčová, Ph.D' },
-      { year: '2022', description: 'Zahájení studia tradiční čínské medicíny - MUDr. Alexandra Vosátková' },
-      { year: '2023', description: 'Motýlí masáže, Ing. Eva Kopasová, seminář zaměřený na využití vonných esencí nejen v porodnictví' },
-      { year: '2024', description: '"Voňavé kouzlo" kytičkového dětství, Ing. Eva Kopasová, seminář zaměřený na harmonický vývoj dětí a jejich duševní zdraví' }
-    ]}
-  ]
-}
+const studies = [
+    {
+        type: 'Bakalářské',
+        field: 'Speciální pedagogika',
+        exam: 'integrativní speciální pedagogika, logopedie, surdopedie',
+        year: '2008',
+    },
+    {
+        type: 'Magisterské',
+        field: 'Speciální pedagogika',
+        exam: 'speciální pedagogika, logopedie, surdopedie, specifické poruchy učení, pedagogika/psychologie',
+        year: '2011',
+    },
+]
+
+const seminars = [
+    { title: '2007 Trénink fonematického uvědomování podle Elkonina', lecturer: 'Doc. PhDr. Marína Mikulajová, CSc.' },
+    { title: '2007 Trénink fonematického uvědomování podle Elkonina', lecturer: 'Doc. PhDr. Marína Mikulajová, CSc.' },
+    { title: '2007 Metodika dysfázie', lecturer: 'PaedDr. Dana Kutálková' },
+    { title: '2008 Deficity dílčích funkcí, Brigitte Sindelar', lecturer: 'Doc.PhDr. Věra Pokorná, CSc.' },
+    { title: '2010 Znak do řeči', lecturer: 'Mgr. L. Kubová, PhDr. R. Škaloudová' },
+    { title: '2012 Myofunkční terapie I.', lecturer: 'Mgr. Jitka Kaulfuss, MUDr.R.Katra, MUDr. M.Koťová Ph.D.' },
+    { title: '2012 Orofaciální stimulace I.', lecturer: 'Mgr. Jitka Kaulfuss' },
+    { title: '2012 Dyslalie', lecturer: 'PaedDr. Eva Škodová' },
+    { title: '2012 Opožděný vývoj řeči', lecturer: 'doc. MUDr. Mojmír Lejska, CSc' },
+    { title: '2013 X. afaziologické sympozium', lecturer: 'více odborníků v oboru' },
+    { title: '2013 Rozvoj komunikace u dětí s PAS', lecturer: 'Mgr. Romana Straussová' },
+    { title: '2013 Myofunkční poruchy z pohledu dysfunkce jazyka Logopedická diagnostika a terapie', lecturer: 'PhDr. Zuzana Jandová' },
+    { title: '2013 Afázie I.', lecturer: 'prim.PaedDr. M.Čecháčková' },
+    { title: '2013 Dyslalie s pohybem a prvky Myofunkční terapie', lecturer: 'Mgr. Jitka Kaulfussová' },
+    { title: '2013 Problematika komunikace u osob s PAS', lecturer: 'PhDr. K.Thorová, Ph.D., PaedDr. V.Čadilová' },
+    { title: '2014 Poruchy vývoje řeči - Vývojová dysfázie - soubor přednášek - Specializační studium logopedů ve školství, I.semestr', lecturer: 'doc. MUDr. Hana Ošlejšková Ph.D., Mgr. Jana Pejčochová, Doc. PaedDr. Jiřina Klenková, Ph.D., PhDr. Barbora Bočková, Ph.D.' },
+    { title: '2014 Afázie II.', lecturer: 'prim.PaedDr. M.Čecháčková' },
+    { title: '2014 Úvodní kurz do metody R. Feuersteina', lecturer: 'PaedDr. Eva Váňová' },
+    { title: '2014 Poruchy řeči a sluchu z pozice foniatrie, klinické logopedie a psychiatrie', lecturer: 'prof. MUDr. Ivo Paclt, CSc.' },
+    { title: '2015 Orofaciálna a bazálna stimulácia u detí s psychomotorickým oneskorením v ranom veku', lecturer: 'PaedDr. A. Fabianová, PhDr. Z. Jandová' },
+    { title: '2015 Dyslalie - metodiky reedukace hlásek', lecturer: 'PaedDr. Dana Kutálková' },
+    { title: '2016 Rozvoj obsahové stránky řeči', lecturer: 'PaedDr. B.Housarová, Ph.D., Mgr. Michaela Voldřichová' },
+    { title: '2016 Praktické využití dotykových tabletů pro Alternativní komunikaci a logopedii', lecturer: 'Lenka Říhová' },
+    { title: '2016 Komunikační profil Matrix', lecturer: 'PhDr. Jana Pešková, Ph.D., Kristýna Hemzáčková' },
+    { title: '2016 Terapie orální pozice', lecturer: 'Mgr. Barbora Červenková' },
+    { title: '2017 Základy komunikace s vizuální oporou u klientů s PAS', lecturer: 'Mgr. Klára Geislerová' },
+    { title: '2017 Pražský logopedický den 2017', lecturer: 'více odborníků v oboru' },
+    { title: '2017 Autismus v praxi - 3.ročník kazuistické konference', lecturer: 'tuzemští a zahraniční odborníci oboru' },
+    { title: '2018 Aktivace energetických systémů člověka a jejich užití v logopedické praxi', lecturer: 'Mgr. Petra Tabačíková' },
+    { title: '2018 Pražský logopedický den 2018 - konference k problematice dítěte s NKS ve vzdělávání', lecturer: 'více odborníků v oboru' },
+    { title: '2018 Autismus v praxi - 4.ročník kazuistické konference', lecturer: 'tuzemští a zahraniční odborníci oboru' },
+    { title: '2019 Prvky senzorické integrační terapie v logopedické praxi', lecturer: 'Mgr. Barbora Červenková' },
+    { title: '2019 Pokročilé dechové a fonační techniky doplněné stimulací akupresurních drah čakrového systému', lecturer: 'Mgr. Petra Tabačíková' },
+    { title: '2019 Mutismus', lecturer: 'PaedDr. Dana Kutálková' },
+    { title: '2019 Základní postupy v aplikované behaviorální analýze', lecturer: 'Mgr. Zuzana Maštenová, BCBA' },
+    { title: '2019 Úvod do senzorické intergrace pro pomáhající profese v sociálních službách', lecturer: 'Paedr. Jana Hrčová, Ph.D' },
+    { title: '2020 Intuitivní rodičovství jeho poruchy a možnosti prevence a intervence', lecturer: 'Mgr. Kateřina Šilhánová' },
+    { title: '2020 Sexualita lidí s poruchou autistického spektra', lecturer: 'organizace Freya' },
+    { title: '2022 Specifika smyslového vnímání u osob s poruchami autistického spektra a strategie jeho rozvoje', lecturer: 'Paedr. Jana Hrčová, Ph.D' },
+    { title: '2022 Zahájení studia tradiční čínské medicíny', lecturer: 'MUDr. Alexandra Vosátková' },
+    { title: '2023 Motýlí masáže, Ing. Eva Kopasová', suffix: ', seminář zaměřený na využití vonných esencí nejen v porodnictví' },
+    { title: '2024 „Voňavé kouzlo“ kytičkového dětství', suffix: ', Ing. Eva Kopasová, seminář zaměřený na harmonický vývoj dětí a jejich duševní zdraví' },
+]
 ---
 <BaseLayout
-    title={vzdelaniData.title}
+    title="Vzdělání"
     description="Vzdělání logopedy"
-    pageTitle="Vzdělání"
-    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Vzdělání' }]}
+    pageTitle="Vzdělání v oboru"
+    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Vzdělání v oboru' }]}
 >
-    <section class="about">
+    <section class="sppb-section page-text-section">
         <div class="container">
-            <h2>Vysokoškolské vzdělání</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
-                <div style="padding: 20px; background: var(--light-bg); border-radius: 4px;">
-                    <h3 style="color: var(--maincolor); margin-bottom: 10px;">{vzdelaniData.education[0].degree} studium</h3>
-                    <p><strong>Obor:</strong> {vzdelaniData.education[0].field}</p>
-                    <p><strong>Zkouška:</strong> {vzdelaniData.education[0].exam}</p>
-                    <p><strong>Rok:</strong> {vzdelaniData.education[0].year}</p>
+            <div class="edu-grid">
+                <div class="edu-col-left">
+                    <h2>Vysokoškolské vzdělání</h2>
+                    <p>Masarykova univerzita Brno</p>
+                    {studies.map((study) => (
+                        <ul class="edu-info-list">
+                            <li><span>Typ studia</span>{study.type}</li>
+                            <li><span>Obor</span>{study.field}</li>
+                            <li><span>Zkouška</span>{study.exam}</li>
+                            <li><span>Rok</span>{study.year}</li>
+                        </ul>
+                    ))}
                 </div>
-                <div style="padding: 20px; background: var(--light-bg); border-radius: 4px;">
-                    <h3 style="color: var(--maincolor); margin-bottom: 10px;">{vzdelaniData.education[1].degree} studium</h3>
-                    <p><strong>Obor:</strong> {vzdelaniData.education[1].field}</p>
-                    <p><strong>Zkouška:</strong> {vzdelaniData.education[1].exam}</p>
-                    <p><strong>Rok:</strong> {vzdelaniData.education[1].year}</p>
+                <div class="edu-col-right">
+                    <h3>Další absolvované odborné semináře a přednášky</h3>
+                    <ul class="icon-list">
+                        {seminars.map((item) => (
+                            <li>
+                                <span class="icon-maps-and-flags" aria-hidden="true"></span>
+                                <strong>{item.title}</strong>{item.suffix}
+                                {item.lecturer && <><br />Přednášející: {item.lecturer}</>}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
-
-            <h2>Další absolvované odborné semináře a přednášky</h2>
-            <ul style="list-style: none; max-width: 900px; margin: 0 auto;">
-                {vzdelaniData.education[2].items.map((item, j) => (
-                    <li key={j} style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; gap: 15px; align-items: flex-start;">
-                        <span style="min-width: 60px; color: var(--maincolor); font-weight: 500;">{item.year}</span>
-                        <span>{item.description}</span>
-                    </li>
-                ))}
-            </ul>
         </div>
     </section>
 </BaseLayout>

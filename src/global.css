@@ -1157,3 +1157,359 @@ body img {
   white-space: nowrap;
   border: 0;
 }
+
+/* --------------------------------------------------------------------------
+   Page-builder sections (content replicated from the original pages)
+   -------------------------------------------------------------------------- */
+.sppb-section {
+  position: relative;
+}
+
+/* Full-width hero with a background image + translucent heading box */
+.page-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 750px;
+  padding: 75px 0;
+  background-color: #f1f5f9;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-attachment: fixed;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.page-hero--small {
+  min-height: 300px;
+  padding: 150px 0;
+}
+
+.page-hero__box {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 50px;
+  text-align: center;
+  background-color: rgba(0, 174, 239, 0.5);
+}
+
+.page-hero__title {
+  margin: 0;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.15;
+}
+
+@media (max-width: 767px) {
+  .page-hero {
+    background-attachment: scroll;
+  }
+
+  .page-hero__title {
+    font-size: 30px;
+  }
+}
+
+/* Two-column about (image + text) */
+.about-one {
+  padding: 120px 0;
+}
+
+.about-one__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.about-one__img {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-right: 40px;
+}
+
+.about-one__img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-one__content {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.about-one__title {
+  margin-bottom: 38px;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 700;
+}
+
+.about-one__content p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.about-one__content .btn {
+  margin-top: 46px;
+}
+
+@media (max-width: 991px) {
+  .about-one__img,
+  .about-one__content {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .about-one__img {
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+}
+
+/* Plain text section */
+.page-text-section {
+  padding: 75px 0;
+}
+
+.page-text-section p {
+  margin-bottom: 16px;
+}
+
+/* Icon bullet list (used on "Co nabízím", "Ceník", "Vzdělání") */
+.icon-list > li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.icon-list > li:last-child {
+  margin-bottom: 0;
+}
+
+.icon-list > li .icon-maps-and-flags {
+  color: var(--maincolor);
+  font-size: 15px;
+  padding-right: 5px;
+}
+
+.icon-maps-and-flags::before {
+  content: '\e916';
+}
+
+/* Education page */
+.edu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.edu-grid > [class*='edu-col'] {
+  padding: 0 15px;
+}
+
+.edu-col-left {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+
+.edu-col-right {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+
+.edu-col-left h2 {
+  margin-bottom: 26px;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.edu-col-right h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.edu-info-list {
+  padding-bottom: 15px;
+}
+
+.edu-info-list li {
+  display: flex;
+  margin-bottom: 18px;
+}
+
+.edu-info-list li:last-child {
+  margin-bottom: 0;
+}
+
+.edu-info-list li span {
+  position: relative;
+  display: inline-block;
+  min-width: 100px;
+  margin-right: 18px;
+  color: #052944;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.edu-info-list li span::after {
+  position: absolute;
+  right: 0;
+  content: ':';
+}
+
+.edu-col-right .icon-list > li {
+  text-indent: -8px;
+}
+
+.edu-col-right .icon-list > li strong {
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .edu-col-left,
+  .edu-col-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+/* Ceník page */
+.cenik-valid {
+  margin-bottom: 11px;
+  color: var(--maincolor);
+  font-family: 'Heebo', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+.cenik-title {
+  margin-bottom: 0;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 700;
+}
+
+.cenik-intro {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.pricing-table.sppb-table th {
+  background: rgb(0, 174, 239);
+  color: #fff;
+}
+
+.pricing-table.sppb-table td {
+  vertical-align: top;
+}
+
+/* Kontakt page */
+.contact-map iframe {
+  width: 100%;
+  border: 0;
+}
+
+.contact-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.contact-box__single {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 0 15px;
+}
+
+.contact-box__single .sppb-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 32px;
+  z-index: 1;
+}
+
+.contact-box__single .sppb-icon-container::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--maincolor);
+  transform: rotate(45deg);
+  content: '';
+  z-index: -1;
+}
+
+.contact-box__single .sppb-media-content {
+  position: relative;
+  display: block;
+  margin-top: -45px;
+  padding: 60px 20px 25px;
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px 0 rgba(234, 234, 234, 0.7);
+}
+
+.contact-box__single .sppb-feature-box-title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.contact-box__single .sppb-feature-box-title a {
+  color: #052944;
+}
+
+.contact-box__single .sppb-feature-box-title a:hover {
+  color: var(--maincolor);
+}
+
+@media (max-width: 991px) {
+  .contact-box__single {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+/* Blog grid (original uses a 3-column card list) */
+.article-list.cols-3 .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.article-list.cols-3 .col-lg-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 0 15px;
+}
+
+.article-list.cols-3 .article {
+  display: block;
+  padding: 0 0 40px;
+}
+
+@media (max-width: 991px) {
+  .article-list.cols-3 .col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

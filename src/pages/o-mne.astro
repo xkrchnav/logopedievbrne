@@ -1,37 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-
-const omneData = {
-  title: 'O mně',
-  subtitle: 'Mgr. Jitka Rotscheinová',
-  aboutContent: 'Od roku 2011 jsem postupně získávala praktické zkušenosti v oboru, v pozici logopedky s lidmi ve věku 3 – 60 let. Nejdříve ve zdravotnictví, potom ve školství a nakonec v sociálních službách. V roce 2019 jsem částečně zahájila svou soukromou praxi, které se plně věnuji od září roku 2022.'
-}
 ---
 <BaseLayout
-    title={omneData.title}
-    description={omneData.subtitle}
+    title="O mně"
+    description="Mgr. Jitka Rotscheinová"
     pageTitle="O mně"
     breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'O mně' }]}
 >
-    <section class="about">
+    <section id="about" class="sppb-section about-one">
         <div class="container">
-            <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px;">
-                    <img src="/images/kdo-jsme.jpg" alt="Mgr. Jitka Rotscheinová" loading="lazy" style="max-width: 100%; border-radius: 4px; margin-bottom: 20px;" />
+            <div class="about-one__row">
+                <div class="about-one__img">
+                    <img
+                        src="/images/2024/02/01/kdo-jsme-small.jpg"
+                        alt="Mgr. Jitka Rotscheinová"
+                        loading="lazy"
+                    />
                 </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <h2>Mgr. Jitka Rotscheinová</h2>
-                    <div class="about-content">
-                        <p>{omneData.aboutContent}</p>
-                        <p>Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
-                        <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
-                        <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči.</p>
-                        <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem, jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času, kolik bude třeba.</p>
-                        <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se.</p>
-                        <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráce a otevřenou komunikaci. Pokud říkáte „ano“, stanete se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou. Když budete chtít – vaše logopedka Jitka Rotscheinová.</p>
-                    </div>
+                <div class="about-one__content">
+                    <p>Moje dcera často říká: „Mami, ty jsi ta nejlepší máma na světě.“ Ano, jsem máma, pro svou dceru jistě ta nejlepší a ona je pro mě tou nejlepší dcerou. I pro druhou dceru jsem samozřejmě tou nejlepší mámou a ona je pro mě nejlepší dcerou. Pak jsem nejlepší mámou jednoho syna a on je pro mě nejlepším synem. A taky jsem manželka a teta a prateta a sestra a dcera a snacha a majitelka psa. Jó a jsem samozřejmě upovídaná žena. Jak jinak? Může vůbec být logopedka neupovídaná? Asi jo. Může. Proč ne.</p>
+                    <p>Ale teď už vážně: Začalo to dcerou. Logopedkou jsem se stala právě díky své dcery. Nemluvila do pěti let. Společně jsme navštívily dost logopedů, protože já jsem chtěla ať už KONEČNĚ mluví! Jenže ona nechtěla, nemohla, potřebovala SVŮJ čas, nebyla na to mluvení ještě dost zralá. Logopedi to věděli, já ne. A tak jsem začala studovat a postupně jsem se stala logopedkou. Od roku 2005 se stala logopedie mým koníčkem a od roku 2011 povoláním. Logopedie je pro mě práce, která mě naplňuje a baví.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="sppb-section page-text-section">
+        <div class="container">
+            <p>Pro mou první praxi logopedky byla velmi přínosná má zkušenost s vlastní dcerou. Právě díky ní jsem měla možnost navštěvovat logopedy v pozici rodiče, kdy v průběhu pěti let jich nebylo zrovna málo. Z těchto zkušeností tj. jako rodič být u logopeda, čerpám dodnes.</p>
+            <p>Od roku 2011 jsem postupně získávala praktické zkušenosti v oboru, v pozici logopedky s lidmi ve věku 3 – 60 let. Nejdříve ve zdravotnictví, potom ve školství a nakonec v sociálních službách. V roce 2019 jsem částečně zahájila svou soukromou praxi, které se plně věnuji od září roku 2022. Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
+            <p>Více o vonných esencích, které používám při práci s klienty se dozvíte zde: <a href="https://www.zrozeni.com">www.zrozeni.com</a></p>
+            <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
+            <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči (narušená komunikační schopnost přidružená k jinému dominantnímu postižení/nemoci). Čím dál více se také věnuji dětem s dyslálií, tj. dětem, které vyslovují hlásky českého jazyka vadně, vůbec, nebo nevyvozené hlásky zaměňují za jiné hlásky.</p>
+            <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času kolik bude třeba. Často jde o mnohem více než „jen“ o rozvoj komunikační schopnosti. Je potřeba zachovat celiství přístup k člověku, tj. u mnohých se nelze věnovat jen komunikaci.</p>
+            <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se. A když někdy prostě nejde řeč, pak je jedno jestli se dorozumím třeba znakem, obrázkem (komunikační kartou), gestem (Znakem do řeči), nebo jakkoliv jinak. Hlavně se dorozumět. A to je podstatná část mé dlouholeté praxe. Učit klienty dorozumět se, ale nejen to…</p>
+            <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráci a otevřenou komunikaci. Pokud říkáte „ano“ stanu se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou.. Když budete chtít – tak vaše logopedka Jitka Rotscheinová</p>
         </div>
     </section>
 </BaseLayout>

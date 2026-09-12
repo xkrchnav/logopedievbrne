@@ -16,55 +16,48 @@ const { Content } = await render(post);
 <BaseLayout
     title={post.data.title}
     description={post.data.description}
-    pageTitle={post.data.title}
+    pageTitle="Blog"
     breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Blog', href: '/blog' }, { label: post.data.title }]}
 >
     <section class="blog-detail">
-        <div class="container-inner">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <article itemscope itemtype="https://schema.org/BlogPosting">
-                        <div class="article-info">
-                            <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
-                                <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
-                                    {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
-                                </time>
-                            </span>
-                            {post.data.updatedDate && (
-                                <span class="updated" title={`Aktualizováno: ${post.data.updatedDate.toLocaleDateString('cs-CZ')}`}>
-                                    <time datetime={post.data.updatedDate.toISOString()} itemprop="dateModified">
-                                        (Aktualizováno: {post.data.updatedDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })})
-                                    </time>
-                                </span>
-                            )}
-                        </div>
-
-                        {post.data.heroImage && (
-                            <div class="article-image">
-                                <img src={post.data.heroImage} alt={post.data.title} itemprop="image" loading="lazy" />
-                            </div>
-                        )}
-
-                        <div class="article-content" itemprop="articleBody">
-                            <Content />
-                        </div>
-
-                        {post.data.tags && post.data.tags.length > 0 && (
-                            <div class="article-tags">
-                                <span>Štítky:</span>
-                                <ul>
-                                    {post.data.tags.map((tag) => (
-                                        <li key={tag}><a href={`/blog?tag=${tag}`}>{tag}</a></li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-                    </article>
-
-                    <div class="article-navigation">
-                        <a href="/blog" class="btn btn-back">&larr; Zpět na blog</a>
-                    </div>
+        <div class="container">
+            <div class="article-details" itemscope itemtype="https://schema.org/Article">
+                <div class="article-header">
+                    <h1 itemprop="headline">{post.data.title}</h1>
                 </div>
+
+                <div class="article-info">
+                    <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
+                        <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
+                            {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        </time>
+                    </span>
+                </div>
+
+                {post.data.heroImage && (
+                    <div class="article-full-image">
+                        <img src={post.data.heroImage} alt={post.data.title} itemprop="image" loading="lazy" />
+                    </div>
+                )}
+
+                <div class="article-content" itemprop="articleBody">
+                    <Content />
+                </div>
+
+                {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="article-tags">
+                        <span>Štítky:</span>
+                        <ul>
+                            {post.data.tags.map((tag) => (
+                                <li key={tag}><a href={`/blog?tag=${tag}`}>{tag}</a></li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
+
+            <div class="article-navigation">
+                <a href="/blog" class="btn btn-back">&larr; Zpět na blog</a>
             </div>
         </div>
     </section>
