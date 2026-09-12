@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
+import aboutImage from '../assets/o-mne/kdo-jsme-small.jpg'
 ---
 <BaseLayout
     title="O mně"
@@ -11,10 +13,12 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <div class="container">
             <div class="about-one__row">
                 <div class="about-one__img">
-                    <img
-                        src="/images/2024/02/01/kdo-jsme-small.jpg"
+                    <Image
+                        src={aboutImage}
                         alt="Mgr. Jitka Rotscheinová"
-                        loading="lazy"
+                        widths={[320, 530, 800]}
+                        sizes="(max-width: 991px) 100vw, 50vw"
+                        loading="eager"
                     />
                 </div>
                 <div class="about-one__content">

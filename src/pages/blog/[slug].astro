@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -36,7 +37,14 @@ const { Content } = await render(post);
 
                 {post.data.heroImage && (
                     <div class="article-full-image">
-                        <img src={post.data.heroImage} alt={post.data.title} itemprop="image" loading="lazy" />
+                        <Image
+                            src={post.data.heroImage}
+                            alt={post.data.title}
+                            widths={[512, 768, 1024]}
+                            sizes="(max-width: 991px) 100vw, 900px"
+                            itemprop="image"
+                            loading="lazy"
+                        />
                     </div>
                 )}
 

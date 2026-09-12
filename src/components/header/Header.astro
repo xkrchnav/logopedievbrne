@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets'
+import retinaLogo from '../../assets/brand/retina.png'
+
 // Replicates the Joomla Helix Ultimate header (style-1):
 // <header id="sp-header"><div class="container"><div class="container-inner"><div class="row">
 interface Props {
@@ -50,12 +53,13 @@ const isActive = (href: string) => {
             </a>
             <div class="logo">
               <a href={logoHref}>
-                <img
+                <Image
                   class="logo-image"
-                  srcset="/images/logo.png 1x, /images/retina.png 2x"
-                  src="/images/logo.png"
-                  height="44px"
+                  src={retinaLogo}
                   alt={logoAlt}
+                  height={44}
+                  densities={[1, 2]}
+                  loading="eager"
                 />
               </a>
             </div>

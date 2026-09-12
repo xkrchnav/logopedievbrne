@@ -974,6 +974,19 @@ body img {
   height: auto;
 }
 
+.blog-detail .article-full-image {
+  display: block;
+  width: 100%;
+  margin: 0 0 29px;
+}
+
+.blog-detail .article-full-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 .blog-detail .article-content {
   font-size: 16px;
   line-height: 1.8;
@@ -1167,19 +1180,32 @@ body img {
 
 /* Full-width hero with a background image + translucent heading box */
 .page-hero {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 750px;
   padding: 75px 0;
+  overflow: hidden;
   background-color: #f1f5f9;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  background-attachment: fixed;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+}
+
+.page-hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.page-hero > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .page-hero--small {

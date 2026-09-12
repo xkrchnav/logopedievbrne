@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
+import heroImage from '../assets/hero/co-nabizim_crop.jpg'
 
 const services = [
     'Individuální přístup založený na dlouholetých praktických zkušenostech a teoretických poznatků v oboru logopedie a speciální pedagogiky',
@@ -30,10 +32,16 @@ const services = [
 ]
 ---
 <BaseLayout title="Co nabízím" description="Služby logopedy">
-    <section
-        class="sppb-section page-hero page-hero--small"
-        style="background-image:url('/images/2024/02/04/co-nabizim_crop.jpg');"
-    >
+    <section class="sppb-section page-hero page-hero--small">
+        <Image
+            class="page-hero__bg"
+            src={heroImage}
+            alt=""
+            widths={[768, 1280, 1920]}
+            sizes="100vw"
+            quality={80}
+            loading="eager"
+        />
         <div class="container">
             <div class="page-hero__box">
                 <h2 class="page-hero__title">Co nabízím</h2>

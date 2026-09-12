@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
+import heroImage from '../assets/hero/wphoto.jpg'
+import aboutImage from '../assets/home/kdo-jsme.jpg'
 ---
 <BaseLayout title="Úvod" description="Logopedie v Brně - Mgr. Jitka Rotscheinová">
-    <section
-        class="sppb-section page-hero"
-        style="background-image:url('/images/2024/02/01/wphoto.jpg');"
-    >
+    <section class="sppb-section page-hero">
+        <Image
+            class="page-hero__bg"
+            src={heroImage}
+            alt=""
+            widths={[768, 1280, 1920]}
+            sizes="100vw"
+            quality={80}
+            loading="eager"
+        />
         <div class="container">
             <div class="page-hero__box">
                 <h2 class="page-hero__title">Logopedie v Brně<br><br>Mgr. Jitka Rotscheinová</h2>
@@ -17,9 +26,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <div class="container">
             <div class="about-one__row">
                 <div class="about-one__img">
-                    <img
-                        src="/images/2024/01/31/kdo-jsme.jpg"
+                    <Image
+                        src={aboutImage}
                         alt="Mgr. Jitka Rotscheinová"
+                        widths={[480, 768, 1200]}
+                        sizes="(max-width: 991px) 100vw, 50vw"
                         loading="lazy"
                     />
                 </div>

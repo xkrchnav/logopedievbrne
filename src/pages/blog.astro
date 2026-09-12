@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -22,13 +23,12 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
                                     {post.data.heroImage && (
                                         <div class="article-intro-image float-left">
                                             <a href={`/blog/${post.id}`}>
-                                                <img
-                                                    width="512"
-                                                    height="381"
+                                                <Image
                                                     src={post.data.heroImage}
                                                     alt={post.data.title}
+                                                    widths={[320, 512, 768]}
+                                                    sizes="(max-width: 991px) 100vw, 33vw"
                                                     itemprop="thumbnailUrl"
-                                                    decoding="async"
                                                     loading="lazy"
                                                 />
                                             </a>
