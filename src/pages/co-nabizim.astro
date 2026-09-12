@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/header/Header.astro'
 
 const coNabizimData = {
   title: 'Co nabízím',
@@ -29,35 +28,20 @@ const coNabizimData = {
   ]
 }
 ---
-<BaseLayout title={coNabizimData.title} showHeader={true} showFooter={true}>
-    <Header title="Co nabízím" description="Služby logopedy" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
-
-    <main class="container">
-        <section id="sp-section-3">
-            <div class="sp-page-title">
-                <div class="container">
-                    <h1 class="sp-page-title-heading">Co nabízím</h1>
-                    <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
-                        <ol class="mod-breadcrumbs breadcrumb">
-                            <li class="mod-breadcrumbs__item"><a href="/">Titulní stránka</a></li>
-                            <li class="mod-breadcrumbs__item active"><span>Co nabízím</span></li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </section>
-
-        <section id="sp-main-body">
-            <section class="services">
-                <div class="container">
-                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
-                    <ul class="service-list">
-                        {coNabizimData.services.map((item, j) => (
-                            <li key={j}>{item}</li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </main>
+<BaseLayout
+    title={coNabizimData.title}
+    description="Služby logopedy"
+    pageTitle="Co nabízím"
+    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Co nabízím' }]}
+>
+    <section class="services">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
+            <ul class="service-list">
+                {coNabizimData.services.map((item, j) => (
+                    <li key={j}>{item}</li>
+                ))}
+            </ul>
+        </div>
+    </section>
 </BaseLayout>

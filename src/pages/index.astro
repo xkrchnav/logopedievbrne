@@ -1,15 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/header/Header.astro'
 
 const homeData = {
   title: 'Logopedie v Brně',
   subtitle: 'Mgr. Jitka Rotscheinová',
-  topBar: {
-    address: 'info@logopedievbrne.cz',
-    phone: '737 365 338',
-    hours: 'Po - Pá: 8:00 - 17:30'
-  },
   sections: [
     {
       type: 'hero',
@@ -59,90 +53,76 @@ const homeData = {
   ]
 }
 ---
-<BaseLayout title={homeData.title} description={homeData.subtitle} showHeader={true} showFooter={true}>
-    <Header title="Logopedie v Brně" description="Mgr. Jitka Rotscheinová" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
+<BaseLayout title={homeData.title} description={homeData.subtitle}>
+    {/* Hero Section */}
+    <section class="hero-section">
+        <div class="container">
+            <h1>{homeData.sections[0].title}</h1>
+            <p>Profesionální logopedická péče dětí i dospělých v Brně a okolí. Individuální přístup, dlouholeté zkušenosti a moderní metody.</p>
+            <a href={homeData.sections[0].buttonLink} class="btn">{homeData.sections[0].buttonText}</a>
+        </div>
+    </section>
 
-    <main class="container">
-        <section id="sp-section-3">
-            <div class="sp-page-title">
-                <div class="container">
-                    <h1 class="sp-page-title-heading">Logopedie v Brně</h1>
-                </div>
-            </div>
-        </section>
-
-        <section id="sp-main-body">
-            {/* Hero Section */}
-            <section class="hero-section">
-                <div class="container">
-                    <h1>Logopedie v domácím prostředí</h1>
-                    <p>Profesionální logopedická péče dětí i dospělých v Brně a okolí. Individuální přístup, dlouholeté zkušenosti a moderní metody.</p>
-                    <a href="/o-mne" class="btn">Více o mně</a>
-                </div>
-            </section>
-
-            {/* About Section */}
-            <section class="about">
-                <div class="container">
-                    <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 300px;">
-                            <h2>O mně</h2>
-                            <img src="/images/kdo-jsme.jpg" alt="Mgr. Jitka Rotscheinová" loading="lazy" style="max-width: 100%; border-radius: 4px; margin-bottom: 20px;" />
-                            <div class="about-content">
-                                <p>Od roku 2011 jsem postupně získávala praktické zkušenosti v oboru, v pozici logopedky s lidmi ve věku 3 – 60 let. Nejdříve ve zdravotnictví, potom ve školství a nakonec v sociálních službách. V roce 2019 jsem částečně zahájila svou soukromou praxi, které se plně věnuji od září roku 2022.</p>
-                                <p>Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
-                                <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
-                                <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči.</p>
-                                <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem, jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času, kolik bude třeba.</p>
-                                <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se.</p>
-                                <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráce a otevřenou komunikaci. Pokud říkáte „ano“, stanete se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou. Když budete chtít – vaše logopedka Jitka Rotscheinová.</p>
-                            </div>
-                        </div>
+    {/* About Section */}
+    <section class="about">
+        <div class="container">
+            <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2>O mně</h2>
+                    <img src="/images/kdo-jsme.jpg" alt="Mgr. Jitka Rotscheinová" loading="lazy" style="max-width: 100%; border-radius: 4px; margin-bottom: 20px;" />
+                    <div class="about-content">
+                        <p>Od roku 2011 jsem postupně získávala praktické zkušenosti v oboru, v pozici logopedky s lidmi ve věku 3 – 60 let. Nejdříve ve zdravotnictví, potom ve školství a nakonec v sociálních službách. V roce 2019 jsem částečně zahájila svou soukromou praxi, které se plně věnuji od září roku 2022.</p>
+                        <p>Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
+                        <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
+                        <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči.</p>
+                        <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem, jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času, kolik bude třeba.</p>
+                        <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se.</p>
+                        <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráce a otevřenou komunikaci. Pokud říkáte „ano“, stanete se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou. Když budete chtít – vaše logopedka Jitka Rotscheinová.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            {/* Services Section */}
-            <section class="services">
-                <div class="container">
-                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
-                    <ul class="service-list">
-                        {homeData.sections[2].items.map((item, j) => (
-                            <li key={j}>{item}</li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
+    {/* Services Section */}
+    <section class="services">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
+            <ul class="service-list">
+                {homeData.sections[2].items.map((item, j) => (
+                    <li key={j}>{item}</li>
+                ))}
+            </ul>
+        </div>
+    </section>
 
-            {/* Pricing Section */}
-            <section class="pricing">
-                <div class="container">
-                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Ceník</h2>
-                    <p style="text-align: center; max-width: 900px; margin: 0 auto 30px;">Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.</p>
-                    <table class="pricing-table">
-                        <thead>
-                            <tr>
-                                <th>Popis</th>
-                                <th>Maximální cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {homeData.sections[3].items.map((item, j) => (
-                                <tr key={j}>
-                                    <td>{item}</td>
-                                    <td></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <hr style="max-width: 900px; margin: 40px auto; border-color: #ddd;" />
-                    <p style="max-width: 900px; margin: 0 auto;">Pozn.:</p>
-                    <ul style="max-width: 900px; margin: 0 auto; padding-left: 20px;">
-                        <li><span>Neposkytuji zdravotní péči dle zákona č. 372/2011 Sb., O zdravotních službách a podmínkách jejich poskytováním v platném znění.</span></li>
-                        <li><span>Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.</span></li>
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </main>
+    {/* Pricing Section */}
+    <section class="pricing">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Ceník</h2>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 30px;">Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.</p>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Popis</th>
+                        <th>Maximální cena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {homeData.sections[3].items.map((item, j) => (
+                        <tr key={j}>
+                            <td>{item}</td>
+                            <td></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <hr style="max-width: 900px; margin: 40px auto; border-color: #ddd;" />
+            <p style="max-width: 900px; margin: 0 auto;">Pozn.:</p>
+            <ul style="max-width: 900px; margin: 0 auto; padding-left: 20px;">
+                <li><span>Neposkytuji zdravotní péči dle zákona č. 372/2011 Sb., O zdravotních službách a podmínkách jejich poskytováním v platném znění.</span></li>
+                <li><span>Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.</span></li>
+            </ul>
+        </div>
+    </section>
 </BaseLayout>

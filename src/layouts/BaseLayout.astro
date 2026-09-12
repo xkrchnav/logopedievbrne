@@ -1,22 +1,59 @@
 ---
 import '../global.css'
+import TopBar from '../components/header/TopBar.astro'
+import Header from '../components/header/Header.astro'
+import OffcanvasMenu from '../components/header/OffcanvasMenu.astro'
+import Footer from '../components/footer/Footer.astro'
+
+interface Breadcrumb {
+  label: string
+  href?: string
+}
 
 interface LayoutProps {
   title: string
   description?: string
-  showHeader: boolean
-  showFooter: boolean
+  showHeader?: boolean
+  showFooter?: boolean
+  pageTitle?: string
+  breadcrumbs?: Breadcrumb[]
+  bodyClass?: string
 }
 
-const { title, description, showHeader, showFooter, children } = Astro.props;
+const {
+  title,
+  description,
+  showHeader = true,
+  showFooter = true,
+  pageTitle,
+  breadcrumbs = [],
+  bodyClass = '',
+} = Astro.props;
+
+const bodyClasses = [
+  'site',
+  'helix-ultimate',
+  'hu',
+  'com_sppagebuilder',
+  'com-sppagebuilder',
+  'view-page',
+  'layout-default',
+  'task-none',
+  'cs-cz',
+  'ltr',
+  'layout-fluid',
+  'offcanvas-init',
+  'offcanvs-position-left',
+  bodyClass,
+].filter(Boolean).join(' ');
 ---
 <!DOCTYPE html>
 <html lang="cs-cz" dir="ltr">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
     <meta name="generator" content="Astro" />
     <title>{title}</title>
     <meta name="description" content={description || "Logopedie v Brně - Mgr. Jitka Rotscheinová"} />
@@ -27,114 +64,131 @@ const { title, description, showHeader, showFooter, children } = Astro.props;
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
+
+    <!-- Template assets (same load order as the original Joomla template) -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/v4-shims.min.css" />
+    <link rel="stylesheet" href="/css/custom-animate.css" />
 </head>
-<body class="site helix-ultimate">
+<body class={bodyClasses}>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v19.0&appId=332665750219618" nonce="D5UjmlXR"></script>
 
     <div class="body-wrapper">
         <div class="body-innerwrapper">
-            <slot name="header" />
-            <slot />
+            {showHeader && (
+                <>
+                    <TopBar />
+                    <Header />
+                </>
+            )}
+
+            <section id="sp-section-3">
+                <div class="row">
+                    <div id="sp-title" class="col-lg-12">
+                        <div class="sp-column">
+                            {pageTitle && (
+                                <div class="sp-page-title">
+                                    <div class="container">
+                                        <h1 class="sp-page-title-heading">{pageTitle}</h1>
+                                        {breadcrumbs.length > 0 && (
+                                            <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
+                                                <ol class="mod-breadcrumbs breadcrumb px-3 py-2">
+                                                    <li class="mod-breadcrumbs__divider float-start">
+                                                        <span class="divider icon-location icon-fw" aria-hidden="true"></span>
+                                                    </li>
+                                                    {breadcrumbs.map((crumb, i) => (
+                                                        <li class={`mod-breadcrumbs__item breadcrumb-item${i === breadcrumbs.length - 1 ? ' active' : ''}`}>
+                                                            {crumb.href
+                                                                ? <a href={crumb.href} class="pathway"><span>{crumb.label}</span></a>
+                                                                : <span>{crumb.label}</span>}
+                                                        </li>
+                                                    ))}
+                                                </ol>
+                                            </nav>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sp-main-body">
+                <div class="row">
+                    <div id="sp-component" class="col-lg-12">
+                        <div class="sp-column">
+                            <div id="system-message-container" aria-live="polite"></div>
+                            <slot />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {showFooter && <Footer />}
         </div>
     </div>
 
-    {showFooter && (
-      <footer id="sp-footer">
-        <div class="footer-container">
-          <div class="footer-top">
-            <div class="footer-col">
-              <h4>Logopedie Brno</h4>
-              <p>Mgr. Jitka Rotscheinová</p>
-              <ul>
-                <li><a href="/">Úvod</a></li>
-                <li><a href="/o-mne">O mně</a></li>
-                <li><a href="/co-nabizim">Co nabízím</a></li>
-                <li><a href="/vzdelani">Vzdělání</a></li>
-                <li><a href="/cenik">Ceník</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/kontakt">Kontakt</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Kontakt:</h4>
-              <address>
-                Mgr. Jitka Rotscheinová<br>
-                Logoped, speciální pedagog<br>
-                mobil: 737 365 338<br>
-                info@logopedievbrne.cz<br>
-                IČO: 68629788
-              </address>
-            </div>
-            <div class="footer-col">
-              <h4>Sledujte nás:</h4>
-              <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
-                  <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
-          </div>
-        </div>
-      </footer>
-    )}
+    <!-- Off Canvas Menu -->
+    <div class="offcanvas-overlay"></div>
+    <OffcanvasMenu />
 
     <!-- Cookie Consent Bar -->
     <div class="cookies-infobar">
         Tento web používá k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím souhlasíte.
         <div class="cookies-infobar_wrapper">
             <a href="#" id="cookies-infobar-close" class="cookies-infobar_btn">Souhlasím</a>
-            <a href="#" class="cookies-infobar_btn">Nesouhlasím</a>
+            <a href="about:blank" class="cookies-infobar_btn">Nesouhlasím</a>
         </div>
     </div>
 
-    <!-- Scroll to Top -->
-    <a href="#" class="sp-scroll-up" aria-label="Nahoru"><span class="fas fa-angle-up" aria-hidden="true">↑</span></a>
+    <!-- Go to top -->
+    <a href="#" class="sp-scroll-up" aria-label="Nahoru"><span class="fas fa-angle-up" aria-hidden="true"></span></a>
 
     <script>
         // Cookie Consent
-        (function() {
-            var infoBar = document.querySelector(".cookies-infobar");
-            var btnAccept = document.querySelector("#cookies-infobar-close");
+        (function () {
+            var infoBar = document.querySelector('.cookies-infobar');
+            var btnAccept = document.querySelector('#cookies-infobar-close');
+            if (!infoBar || !btnAccept) return;
 
             function hideInfobar() {
-                infoBar.className = infoBar.classList.value + " cookies-infobar_accepted";
+                infoBar.className = infoBar.classList.value + ' cookies-infobar_accepted';
             }
 
             function wasAccepted() {
-                return checkCookie() === "1";
+                return checkCookie() === '1';
             }
 
             function checkCookie() {
-                var name = "cookieInfoHidden=";
+                var name = 'cookieInfoHidden=';
                 var cookies = document.cookie.split(';');
-                for(var i = 0; i < cookies.length; i++) {
+                for (var i = 0; i < cookies.length; i++) {
                     var cookie = cookies[i];
-                    while (cookie.charAt(0)==' ') {
+                    while (cookie.charAt(0) == ' ') {
                         cookie = cookie.substring(1);
                     }
                     if (cookie.indexOf(name) === 0) {
                         return cookie.substring(name.length, cookie.length);
                     }
                 }
-                return "";
+                return '';
             }
 
             function saveAcceptInCookies(daysOfValidity) {
                 var now = new Date();
-                var time = now.getTime() + (daysOfValidity * 24 * 60 * 60 * 1000);
+                var time = now.getTime() + daysOfValidity * 24 * 60 * 60 * 1000;
                 var newTime = new Date(now.setTime(time));
                 newTime = newTime.toUTCString();
-                document.cookie = "cookieInfoHidden=1; expires=" + newTime + "; path=/";
+                document.cookie = 'cookieInfoHidden=1; expires=' + newTime + '; path=/';
             }
 
-            if(wasAccepted()) {
+            if (wasAccepted()) {
                 hideInfobar();
             } else {
-                btnAccept.addEventListener("click", function(e) {
+                btnAccept.addEventListener('click', function (e) {
                     e.preventDefault();
                     hideInfobar();
                     saveAcceptInCookies(7);
@@ -164,7 +218,7 @@ const { title, description, showHeader, showFooter, children } = Astro.props;
     <script>
         // Google Analytics
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-ZHHFQD5G1V');
     </script>

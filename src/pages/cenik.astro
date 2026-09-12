@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/header/Header.astro'
 
 const cenikData = {
   title: 'Ceník',
@@ -18,54 +17,39 @@ const cenikData = {
   ]
 }
 ---
-<BaseLayout title={cenikData.title} showHeader={true} showFooter={true}>
-    <Header title="Ceník" description="Ceník služeb" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
-
-    <main class="container">
-        <section id="sp-section-3">
-            <div class="sp-page-title">
-                <div class="container">
-                    <h1 class="sp-page-title-heading">Ceník</h1>
-                    <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
-                        <ol class="mod-breadcrumbs breadcrumb">
-                            <li class="mod-breadcrumbs__item"><a href="/">Titulní stránka</a></li>
-                            <li class="mod-breadcrumbs__item active"><span>Ceník</span></li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </section>
-
-        <section id="sp-main-body">
-            <section class="pricing">
-                <div class="container">
-                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Ceník</h2>
-                    <p style="text-align: center; max-width: 900px; margin: 0 auto 30px;">{cenikData.paymentInfo}</p>
-                    <table class="pricing-table">
-                        <thead>
-                            <tr>
-                                <th>Popis</th>
-                                <th>Maximální cena</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cenikData.pricing.map((item, j) => (
-                                <tr key={j}>
-                                    <td>{item.description}</td>
-                                    <td>{item.price}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <hr style="max-width: 900px; margin: 40px auto; border-color: #ddd;" />
-                    <p style="max-width: 900px; margin: 0 auto;">Pozn.:</p>
-                    <ul style="max-width: 900px; margin: 0 auto; padding-left: 20px;">
-                        {cenikData.notes.map((note, j) => (
-                            <li key={j}><span>{note}</span></li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </main>
+<BaseLayout
+    title={cenikData.title}
+    description="Ceník služeb"
+    pageTitle="Ceník"
+    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Ceník' }]}
+>
+    <section class="pricing">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Ceník</h2>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 30px;">{cenikData.paymentInfo}</p>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Popis</th>
+                        <th>Maximální cena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cenikData.pricing.map((item, j) => (
+                        <tr key={j}>
+                            <td>{item.description}</td>
+                            <td>{item.price}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <hr style="max-width: 900px; margin: 40px auto; border-color: #ddd;" />
+            <p style="max-width: 900px; margin: 0 auto;">Pozn.:</p>
+            <ul style="max-width: 900px; margin: 0 auto; padding-left: 20px;">
+                {cenikData.notes.map((note, j) => (
+                    <li key={j}><span>{note}</span></li>
+                ))}
+            </ul>
+        </div>
+    </section>
 </BaseLayout>

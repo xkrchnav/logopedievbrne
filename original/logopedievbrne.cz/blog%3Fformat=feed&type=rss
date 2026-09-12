@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! - Open Source Content Management" -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Blog</title>
+		<description><![CDATA[]]></description>
+		<link>https://logopedievbrne.cz/blog</link>
+		<lastBuildDate>Sat, 12 Sep 2026 05:08:05 +0000</lastBuildDate>
+		<generator>Joomla! - Open Source Content Management</generator>
+		<atom:link rel="self" type="application/rss+xml" href="https://logopedievbrne.cz/blog?format=feed&amp;type=rss"/>
+		<language>cs-cz</language>
+		<item>
+			<title>Kytičková ambulance</title>
+			<link>https://logopedievbrne.cz/blog/kytickova-ambulance</link>
+			<guid isPermaLink="true">https://logopedievbrne.cz/blog/kytickova-ambulance</guid>
+			<description><![CDATA[<p><picture class="responsive-image"><source type="image/webp" srcset="/media/cached-resp-images/images/2024/02/04/kytickova_320.webp?version=8ad1996e8fb9884ce5daf30072f77208 320w"><source type="image/png" srcset="/media/cached-resp-images/images/2024/02/04/kytickova_320.png?version=025544f4a264c3d852c660d1393fd7b4 320w"><img width="512" height="381" data-src="https://logopedievbrne.cz/images/2024/02/04/kytickova.png" alt="" decoding="async" loading="lazy" class="lazyload" /></picture></p><p>S vonnými esencemi Zrození od Evy Kopasové jsem se seznámila „náhodou“. Celkově mě<br>zaujala její práce, o které se zmínila během vzájemného představování na mé přednášce logopedie,<br>kterou navštívila. Po přednášce jsem ji oslovila, zda by mi o své práci a vonných esencích řekla<br>něco víc. Tímto se otevřela naše voňavá spolupráce, která trvá již přes dva roky. Jsem za to velmi<br>vděčná, protože do té doby jsem o možnostech využití „vůní“ v logopedii nevěděla téměř nic, i<br>když jsem po nich už delší čas pátrala.</p>
+]]></description>
+			<category>Blog</category>
+			<pubDate>Sun, 04 Feb 2024 06:28:49 +0000</pubDate>
+		</item>
+	</channel>
+</rss>

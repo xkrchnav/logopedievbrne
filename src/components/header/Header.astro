@@ -1,107 +1,115 @@
 ---
-import './Header.css'
-
-export interface HeaderProps {
-  title: string
-  description: string
-  logoAlt: string
-  showTopBar?: boolean
+// Replicates the Joomla Helix Ultimate header (style-1):
+// <header id="sp-header"><div class="container"><div class="container-inner"><div class="row">
+interface Props {
+  logoAlt?: string
+  logoHref?: string
 }
 
-const { title, description, logoAlt, showTopBar = true } = Astro.props;
----
-{showTopBar && (
-  <section id="sp-top">
-    <div class="container">
-      <ul class="main-header__top-address">
-        <li>
-          <div class="icon">
-            <span class="icon-email">✉</span>
-          </div>
-          <div class="text">
-            <p><a href="mailto:info@logopedievbrne.cz">info@logopedievbrne.cz</a></p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="icon-wall-clock">🕐</span>
-          </div>
-          <div class="text">
-            <p>Po - Pá: 8:00 - 17:30</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="icon-user">📞</span>
-          </div>
-          <div class="text">
-            <p>737 365 338</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-)}
+const {
+  logoAlt = 'Logopedie v domácím prostředí',
+  logoHref = '/',
+} = Astro.props;
 
+const items = [
+  { label: 'Úvod', href: '/' },
+  { label: 'O mně', href: '/o-mne' },
+  { label: 'Co nabízím', href: '/co-nabizim' },
+  { label: 'Vzdělání', href: '/vzdelani' },
+  { label: 'Ceník', href: '/cenik' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Kontakt', href: '/kontakt' },
+];
+
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href + '/');
+};
+---
 <header id="sp-header">
-  <div class="container container-inner">
-    <a id="offcanvas-toggler" aria-label="Navigace" class="offcanvas-toggler-left" href="#" aria-hidden="true" title="Navigace">
-      <div class="burger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+  <div class="container">
+    <div class="container-inner">
+      <div class="row">
+        <!-- Logo -->
+        <div id="sp-logo" class="col-8 col-sm-4 col-md-4 col-lg-3">
+          <div class="sp-column d-flex align-items-center">
+            <a
+              id="offcanvas-toggler"
+              aria-label="Navigace"
+              title="Navigace"
+              class="offcanvas-toggler-left offcanvas offcanvas-toggler-secondary d-flex d-lg-none"
+              href="#"
+            >
+              <div class="burger-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </a>
+            <div class="logo">
+              <a href={logoHref}>
+                <img
+                  class="logo-image"
+                  srcset="/images/logo.png 1x, /images/retina.png 2x"
+                  src="/images/logo.png"
+                  height="44px"
+                  alt={logoAlt}
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <div id="sp-menu" class="col-4 col-sm-3 col-md-4 col-lg-9">
+          <div class="sp-column d-flex align-items-center justify-content-end">
+            <nav class="sp-megamenu-wrapper d-flex" role="navigation" aria-label="Hlavní navigace">
+              <ul class="sp-megamenu-parent menu-animation-fade-down d-none d-lg-block">
+                {items.map((item) => (
+                  <li class={`sp-menu-item${isActive(item.href) ? ' active current-item' : ''}`}>
+                    <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </div>
       </div>
-    </a>
-    <div class="logo">
-      <a href="/">
-        <img class="logo-image" 
-             srcset="/images/logo.png 1x, /images/retina.png 2x" 
-             src="/images/logo.png" 
-             height="44px" 
-             alt={logoAlt} 
-             loading="lazy" />
-      </a>
     </div>
-    <nav class="sp-megamenu-wrapper" role="navigation" aria-label="Hlavní navigace">
-      <ul class="sp-megamenu-parent menu-animation-fade-down">
-        <li class="sp-menu-item"><a href="/">Úvod</a></li>
-        <li class="sp-menu-item"><a href="/o-mne">O mně</a></li>
-        <li class="sp-menu-item"><a href="/co-nabizim">Co nabízím</a></li>
-        <li class="sp-menu-item"><a href="/vzdelani">Vzdělání</a></li>
-        <li class="sp-menu-item"><a href="/cenik">Ceník</a></li>
-        <li class="sp-menu-item"><a href="/blog">Blog</a></li>
-        <li class="sp-menu-item"><a href="/kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggler = document.getElementById('offcanvas-toggler');
-  const menu = document.querySelector('.sp-megamenu-wrapper');
-  const closeBtn = document.querySelector('.close-offcanvas');
-  
-  if (toggler && menu) {
-    toggler.addEventListener('click', (e) => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggler = document.getElementById('offcanvas-toggler');
+    const offcanvas = document.querySelector('.offcanvas-menu');
+    const overlay = document.querySelector('.offcanvas-overlay');
+    const closeBtn = document.querySelector('.close-offcanvas');
+
+    const open = () => {
+      offcanvas?.classList.add('offcanvas-active');
+      overlay?.classList.add('active');
+      document.body.classList.add('offcanvas-active');
+    };
+    const close = () => {
+      offcanvas?.classList.remove('offcanvas-active');
+      overlay?.classList.remove('active');
+      document.body.classList.remove('offcanvas-active');
+    };
+
+    toggler?.addEventListener('click', (e) => {
       e.preventDefault();
-      menu.classList.toggle('open');
+      if (offcanvas?.classList.contains('offcanvas-active')) close();
+      else open();
     });
-  }
-  
-  if (closeBtn && menu) {
-    closeBtn.addEventListener('click', (e) => {
+    closeBtn?.addEventListener('click', (e) => {
       e.preventDefault();
-      menu.classList.remove('open');
+      close();
     });
-  }
-  
-  document.addEventListener('click', (e) => {
-    if (menu && menu.classList.contains('open')) {
-      if (!menu.contains(e.target) && !toggler?.contains(e.target)) {
-        menu.classList.remove('open');
-      }
-    }
+    overlay?.addEventListener('click', close);
   });
-});
 </script>

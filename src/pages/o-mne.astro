@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/header/Header.astro'
 
 const omneData = {
   title: 'O mně',
@@ -8,46 +7,31 @@ const omneData = {
   aboutContent: 'Od roku 2011 jsem postupně získávala praktické zkušenosti v oboru, v pozici logopedky s lidmi ve věku 3 – 60 let. Nejdříve ve zdravotnictví, potom ve školství a nakonec v sociálních službách. V roce 2019 jsem částečně zahájila svou soukromou praxi, které se plně věnuji od září roku 2022.'
 }
 ---
-<BaseLayout title={omneData.title} description={omneData.subtitle} showHeader={true} showFooter={true}>
-    <Header title="O mně" description="Mgr. Jitka Rotscheinová" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
-
-    <main class="container">
-        <section id="sp-section-3">
-            <div class="sp-page-title">
-                <div class="container">
-                    <h1 class="sp-page-title-heading">O mně</h1>
-                    <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
-                        <ol class="mod-breadcrumbs breadcrumb">
-                            <li class="mod-breadcrumbs__item"><a href="/">Titulní stránka</a></li>
-                            <li class="mod-breadcrumbs__item active"><span>O mně</span></li>
-                        </ol>
-                    </nav>
+<BaseLayout
+    title={omneData.title}
+    description={omneData.subtitle}
+    pageTitle="O mně"
+    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'O mně' }]}
+>
+    <section class="about">
+        <div class="container">
+            <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="/images/kdo-jsme.jpg" alt="Mgr. Jitka Rotscheinová" loading="lazy" style="max-width: 100%; border-radius: 4px; margin-bottom: 20px;" />
                 </div>
-            </div>
-        </section>
-
-        <section id="sp-main-body">
-            <section class="about">
-                <div class="container">
-                    <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 300px;">
-                            <img src="/images/kdo-jsme.jpg" alt="Mgr. Jitka Rotscheinová" loading="lazy" style="max-width: 100%; border-radius: 4px; margin-bottom: 20px;" />
-                        </div>
-                        <div style="flex: 1; min-width: 300px;">
-                            <h2>Mgr. Jitka Rotscheinová</h2>
-                            <div class="about-content">
-                                <p>{omneData.aboutContent}</p>
-                                <p>Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
-                                <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
-                                <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči.</p>
-                                <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem, jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času, kolik bude třeba.</p>
-                                <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se.</p>
-                                <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráce a otevřenou komunikaci. Pokud říkáte „ano“, stanete se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou. Když budete chtít – vaše logopedka Jitka Rotscheinová.</p>
-                            </div>
-                        </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h2>Mgr. Jitka Rotscheinová</h2>
+                    <div class="about-content">
+                        <p>{omneData.aboutContent}</p>
+                        <p>Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
+                        <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
+                        <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči.</p>
+                        <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem, jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času, kolik bude třeba.</p>
+                        <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se.</p>
+                        <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráce a otevřenou komunikaci. Pokud říkáte „ano“, stanete se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou. Když budete chtít – vaše logopedka Jitka Rotscheinová.</p>
                     </div>
                 </div>
-            </section>
-        </section>
-    </main>
+            </div>
+        </div>
+    </section>
 </BaseLayout>

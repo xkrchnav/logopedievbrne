@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! - Open Source Content Management" -->
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="cs-cz">
+	<title type="text">Blog</title>
+	<subtitle type="text"></subtitle>
+	<link rel="alternate" type="text/html" href="https://logopedievbrne.cz"/>
+	<id>https://logopedievbrne.cz/blog</id>
+	<updated>2026-09-12T05:08:05+00:00</updated>
+	<author>
+		<name>Mgr. Jitka Rotscheinová</name>
+	</author>
+	<generator uri="https://www.joomla.org">Joomla! - Open Source Content Management</generator>
+	<link rel="self" type="application/atom+xml" href="https://logopedievbrne.cz/blog?format=feed&amp;type=atom"/>
+	<entry>
+		<title>Kytičková ambulance</title>
+		<link rel="alternate" type="text/html" href="https://logopedievbrne.cz/blog/kytickova-ambulance"/>
+		<published>2024-02-04T06:28:49+00:00</published>
+		<updated>2024-02-04T06:28:49+00:00</updated>
+		<id>https://logopedievbrne.cz/blog/kytickova-ambulance</id>
+		<author>
+			<name>Jozef Mera</name>
+		</author>
+		<summary type="html">&lt;p&gt;&lt;picture class=&quot;responsive-image&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;/media/cached-resp-images/images/2024/02/04/kytickova_320.webp?version=8ad1996e8fb9884ce5daf30072f77208 320w&quot;&gt;&lt;source type=&quot;image/png&quot; srcset=&quot;/media/cached-resp-images/images/2024/02/04/kytickova_320.png?version=025544f4a264c3d852c660d1393fd7b4 320w&quot;&gt;&lt;img width=&quot;512&quot; height=&quot;381&quot; src=&quot;https://logopedievbrne.cz/images/2024/02/04/kytickova.png&quot; alt=&quot;&quot; decoding=&quot;async&quot; loading=&quot;lazy&quot;&gt;&lt;/picture&gt;&lt;/p&gt;&lt;p&gt;S vonnými esencemi Zrození od Evy Kopasové jsem se seznámila „náhodou“. Celkově mě&lt;br&gt;zaujala její práce, o které se zmínila během vzájemného představování na mé přednášce logopedie,&lt;br&gt;kterou navštívila. Po přednášce jsem ji oslovila, zda by mi o své práci a vonných esencích řekla&lt;br&gt;něco víc. Tímto se otevřela naše voňavá spolupráce, která trvá již přes dva roky. Jsem za to velmi&lt;br&gt;vděčná, protože do té doby jsem o možnostech využití „vůní“ v logopedii nevěděla téměř nic, i&lt;br&gt;když jsem po nich už delší čas pátrala.&lt;/p&gt;
+</summary>
+		<content type="html">&lt;p&gt;&lt;picture class=&quot;responsive-image&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;/media/cached-resp-images/images/2024/02/04/kytickova_320.webp?version=8ad1996e8fb9884ce5daf30072f77208 320w&quot;&gt;&lt;source type=&quot;image/png&quot; srcset=&quot;/media/cached-resp-images/images/2024/02/04/kytickova_320.png?version=025544f4a264c3d852c660d1393fd7b4 320w&quot;&gt;&lt;img width=&quot;512&quot; height=&quot;381&quot; src=&quot;https://logopedievbrne.cz/images/2024/02/04/kytickova.png&quot; alt=&quot;&quot; decoding=&quot;async&quot; loading=&quot;lazy&quot;&gt;&lt;/picture&gt;&lt;/p&gt;&lt;p&gt;S vonnými esencemi Zrození od Evy Kopasové jsem se seznámila „náhodou“. Celkově mě&lt;br&gt;zaujala její práce, o které se zmínila během vzájemného představování na mé přednášce logopedie,&lt;br&gt;kterou navštívila. Po přednášce jsem ji oslovila, zda by mi o své práci a vonných esencích řekla&lt;br&gt;něco víc. Tímto se otevřela naše voňavá spolupráce, která trvá již přes dva roky. Jsem za to velmi&lt;br&gt;vděčná, protože do té doby jsem o možnostech využití „vůní“ v logopedii nevěděla téměř nic, i&lt;br&gt;když jsem po nich už delší čas pátrala.&lt;/p&gt;
+</content>
+		<category term="Blog" />
+	</entry>
+</feed>

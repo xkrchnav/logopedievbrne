@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/header/Header.astro'
 
 const vzdelaniData = {
   title: 'Vzdělání',
@@ -53,54 +52,39 @@ const vzdelaniData = {
   ]
 }
 ---
-<BaseLayout title={vzdelaniData.title} showHeader={true} showFooter={true}>
-    <Header title="Vzdělání" description="Vzdělání logopedy" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
-
-    <main class="container">
-        <section id="sp-section-3">
-            <div class="sp-page-title">
-                <div class="container">
-                    <h1 class="sp-page-title-heading">Vzdělání</h1>
-                    <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
-                        <ol class="mod-breadcrumbs breadcrumb">
-                            <li class="mod-breadcrumbs__item"><a href="/">Titulní stránka</a></li>
-                            <li class="mod-breadcrumbs__item active"><span>Vzdělání</span></li>
-                        </ol>
-                    </nav>
+<BaseLayout
+    title={vzdelaniData.title}
+    description="Vzdělání logopedy"
+    pageTitle="Vzdělání"
+    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Vzdělání' }]}
+>
+    <section class="about">
+        <div class="container">
+            <h2>Vysokoškolské vzdělání</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                <div style="padding: 20px; background: var(--light-bg); border-radius: 4px;">
+                    <h3 style="color: var(--maincolor); margin-bottom: 10px;">{vzdelaniData.education[0].degree} studium</h3>
+                    <p><strong>Obor:</strong> {vzdelaniData.education[0].field}</p>
+                    <p><strong>Zkouška:</strong> {vzdelaniData.education[0].exam}</p>
+                    <p><strong>Rok:</strong> {vzdelaniData.education[0].year}</p>
+                </div>
+                <div style="padding: 20px; background: var(--light-bg); border-radius: 4px;">
+                    <h3 style="color: var(--maincolor); margin-bottom: 10px;">{vzdelaniData.education[1].degree} studium</h3>
+                    <p><strong>Obor:</strong> {vzdelaniData.education[1].field}</p>
+                    <p><strong>Zkouška:</strong> {vzdelaniData.education[1].exam}</p>
+                    <p><strong>Rok:</strong> {vzdelaniData.education[1].year}</p>
                 </div>
             </div>
-        </section>
 
-        <section id="sp-main-body">
-            <section class="about">
-                <div class="container">
-                    <h2>Vysokoškolské vzdělání</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
-                        <div style="padding: 20px; background: var(--light-bg); border-radius: 4px;">
-                            <h3 style="color: var(--primary-color); margin-bottom: 10px;">{vzdelaniData.education[0].degree} studium</h3>
-                            <p><strong>Obor:</strong> {vzdelaniData.education[0].field}</p>
-                            <p><strong>Zkouška:</strong> {vzdelaniData.education[0].exam}</p>
-                            <p><strong>Rok:</strong> {vzdelaniData.education[0].year}</p>
-                        </div>
-                        <div style="padding: 20px; background: var(--light-bg); border-radius: 4px;">
-                            <h3 style="color: var(--primary-color); margin-bottom: 10px;">{vzdelaniData.education[1].degree} studium</h3>
-                            <p><strong>Obor:</strong> {vzdelaniData.education[1].field}</p>
-                            <p><strong>Zkouška:</strong> {vzdelaniData.education[1].exam}</p>
-                            <p><strong>Rok:</strong> {vzdelaniData.education[1].year}</p>
-                        </div>
-                    </div>
-
-                    <h2>Další absolvované odborné semináře a přednášky</h2>
-                    <ul style="list-style: none; max-width: 900px; margin: 0 auto;">
-                        {vzdelaniData.education[2].items.map((item, j) => (
-                            <li key={j} style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; gap: 15px; align-items: flex-start;">
-                                <span style="min-width: 60px; color: var(--primary-color); font-weight: 500;">{item.year}</span>
-                                <span>{item.description}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </main>
+            <h2>Další absolvované odborné semináře a přednášky</h2>
+            <ul style="list-style: none; max-width: 900px; margin: 0 auto;">
+                {vzdelaniData.education[2].items.map((item, j) => (
+                    <li key={j} style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; gap: 15px; align-items: flex-start;">
+                        <span style="min-width: 60px; color: var(--maincolor); font-weight: 500;">{item.year}</span>
+                        <span>{item.description}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
 </BaseLayout>
