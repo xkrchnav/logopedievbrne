@@ -4,6 +4,7 @@ import TopBar from '../components/header/TopBar.astro'
 import Header from '../components/header/Header.astro'
 import OffcanvasMenu from '../components/header/OffcanvasMenu.astro'
 import Footer from '../components/footer/Footer.astro'
+import { url } from '../utils/url'
 
 interface Breadcrumb {
     label: string
@@ -62,8 +63,8 @@ const bodyClasses = [
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="icon" type="image/png" href="/favicon.png" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href={url('favicon.png')} />
+        <link rel="icon" href={url('favicon.ico')} />
         <meta name="generator" content="Astro" />
         <title>{title}</title>
         <meta
@@ -87,10 +88,10 @@ const bodyClasses = [
         <meta name="twitter:title" content={title} />
 
         <!-- Template assets (same load order as the original Joomla template) -->
-        <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/css/v4-shims.min.css" />
-        <link rel="stylesheet" href="/css/custom-animate.css" />
+        <link rel="stylesheet" href={url('css/bootstrap.min.css')} />
+        <link rel="stylesheet" href={url('css/font-awesome.min.css')} />
+        <link rel="stylesheet" href={url('css/v4-shims.min.css')} />
+        <link rel="stylesheet" href={url('css/custom-animate.css')} />
     </head>
     <body class={bodyClasses}>
         <div id="fb-root"></div>
@@ -139,9 +140,9 @@ const bodyClasses = [
                                                                 >
                                                                     {crumb.href ? (
                                                                         <a
-                                                                            href={
-                                                                                crumb.href
-                                                                            }
+                                                                            href={url(
+                                                                                crumb.href,
+                                                                            )}
                                                                             class="pathway"
                                                                         >
                                                                             <span>

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
 import heroImage from '../assets/hero/wphoto.jpg'
 import aboutImage from '../assets/home/kdo-jsme.jpg'
+import { url } from '../utils/url'
 ---
 
 <BaseLayout
@@ -63,7 +64,7 @@ import aboutImage from '../assets/home/kdo-jsme.jpg'
                         Ale teď už vážně: Začalo to dcerou. Logopedkou jsem se
                         stala právě díky své dceři...&nbsp;
                     </p>
-                    <a href="/o-mne" class="btn btn-primary">
+                    <a href={url('o-mne')} class="btn btn-primary">
                         <span>Více o mně</span>
                     </a>
                 </div>

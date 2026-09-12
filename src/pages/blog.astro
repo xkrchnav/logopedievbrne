@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import { url } from '../utils/url'
 
 const posts = await getCollection('blog')
 posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -28,7 +29,7 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
                                 >
                                     {post.data.heroImage && (
                                         <div class="article-intro-image float-left">
-                                            <a href={`/blog/${post.id}`}>
+                                            <a href={url(`blog/${post.id}`)}>
                                                 <Image
                                                     src={post.data.heroImage}
                                                     alt={post.data.title}
@@ -44,7 +45,11 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
                                     <div class="article-body">
                                         <div class="article-header">
                                             <h2>
-                                                <a href={`/blog/${post.id}`}>
+                                                <a
+                                                    href={url(
+                                                        `blog/${post.id}`,
+                                                    )}
+                                                >
                                                     {post.data.title}
                                                 </a>
                                             </h2>
@@ -76,7 +81,7 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 
                                         <div class="readmore">
                                             <a
-                                                href={`/blog/${post.id}`}
+                                                href={url(`blog/${post.id}`)}
                                                 itemprop="url"
                                                 aria-label={`Číst dál … ${post.data.title}`}
                                             >

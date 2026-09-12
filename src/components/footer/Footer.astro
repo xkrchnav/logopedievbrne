@@ -1,4 +1,6 @@
 ---
+import { url } from '../../utils/url'
+
 // Replicates the Joomla footer (#sp-footer) built with SP Page Builder.
 const year = new Date().getFullYear()
 
@@ -33,7 +35,11 @@ const menu = [
                                                 <ul>
                                                     {menu.map((item) => (
                                                         <li>
-                                                            <a href={item.href}>
+                                                            <a
+                                                                href={url(
+                                                                    item.href,
+                                                                )}
+                                                            >
                                                                 {item.label}
                                                             </a>
                                                         </li>

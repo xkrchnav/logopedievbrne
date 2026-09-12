@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import retinaLogo from '../../assets/brand/retina.png'
+import { stripBase, url } from '../../utils/url'
 
 // Replicates the Joomla Helix Ultimate header (style-1):
 // <header id="sp-header"><div class="container"><div class="container-inner"><div class="row">
@@ -22,7 +23,7 @@ const items = [
     { label: 'Kontakt', href: '/kontakt' },
 ]
 
-const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/'
+const pathname = stripBase(Astro.url.pathname)
 
 const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
@@ -51,7 +52,7 @@ const isActive = (href: string) => {
                             </div>
                         </a>
                         <div class="logo">
-                            <a href={logoHref}>
+                            <a href={url(logoHref)}>
                                 <Image
                                     class="logo-image"
                                     src={retinaLogo}
@@ -79,7 +80,7 @@ const isActive = (href: string) => {
                                         class={`sp-menu-item${isActive(item.href) ? ' active current-item' : ''}`}
                                     >
                                         <a
-                                            href={item.href}
+                                            href={url(item.href)}
                                             aria-current={
                                                 isActive(item.href)
                                                     ? 'page'

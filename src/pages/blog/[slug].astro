@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
 import { getCollection, render } from 'astro:content'
+import { url } from '../../utils/url'
 
 export async function getStaticPaths() {
     const posts = await getCollection('blog')
@@ -77,7 +78,7 @@ const { Content } = await render(post)
                         <ul>
                             {post.data.tags.map((tag) => (
                                 <li key={tag}>
-                                    <a href={`/blog?tag=${tag}`}>{tag}</a>
+                                    <a href={url(`blog?tag=${tag}`)}>{tag}</a>
                                 </li>
                             ))}
                         </ul>
@@ -86,7 +87,7 @@ const { Content } = await render(post)
             </div>
 
             <div class="article-navigation">
-                <a href="/blog" class="btn btn-back">
+                <a href={url('blog')} class="btn btn-back">
                     &larr; Zpět na blog
                 </a>
             </div>
