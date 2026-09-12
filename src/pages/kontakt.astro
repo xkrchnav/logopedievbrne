@@ -22,12 +22,16 @@ const boxes = [
     },
 ]
 ---
+
 <BaseLayout
     title="Kontakt"
     description="Kontaktní informace"
     pageTitle="Kontakt"
     pageTitleTag="h2"
-    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Kontakt' }]}
+    breadcrumbs={[
+        { label: 'Titulní stránka', href: '/' },
+        { label: 'Kontakt' },
+    ]}
 >
     <section class="sppb-section contact-map">
         <div class="container">
@@ -38,9 +42,14 @@ const boxes = [
                 style="border:0;"
                 allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+                referrerpolicy="no-referrer-when-downgrade"
+            >
             </iframe>
-            <p>Tramvaj č. 8, zastávka Krásného, pak 10 min. pěšky. Nebo tramvaj č. 8 zastávka Bělohorská, pak autobus č. 55, nebo č. 75 zastávka Podlomní, pak 2 min. pěšky.</p>
+            <p>
+                Tramvaj č. 8, zastávka Krásného, pak 10 min. pěšky. Nebo tramvaj
+                č. 8 zastávka Bělohorská, pak autobus č. 55, nebo č. 75 zastávka
+                Podlomní, pak 2 min. pěšky.
+            </p>
             <br />
             <strong>Těším se na Vaši návštěvu.</strong>
         </div>
@@ -55,10 +64,18 @@ const boxes = [
                             <i class={box.icon}></i>
                         </span>
                         <div class="sppb-media-content">
-                            <h2 class="sppb-feature-box-title"><a href={box.href ?? '#'}>{box.label}</a></h2>
+                            <h2 class="sppb-feature-box-title">
+                                <a href={box.href ?? '#'}>{box.label}</a>
+                            </h2>
                             <div class="sppb-addon-text">
                                 {box.lines.map((line) => (
-                                    <p>{box.href ? <a href={box.href}>{line}</a> : line}</p>
+                                    <p>
+                                        {box.href ? (
+                                            <a href={box.href}>{line}</a>
+                                        ) : (
+                                            line
+                                        )}
+                                    </p>
                                 ))}
                             </div>
                         </div>

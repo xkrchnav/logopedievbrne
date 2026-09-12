@@ -5,115 +5,127 @@ import retinaLogo from '../../assets/brand/retina.png'
 // Replicates the Joomla Helix Ultimate header (style-1):
 // <header id="sp-header"><div class="container"><div class="container-inner"><div class="row">
 interface Props {
-  logoAlt?: string
-  logoHref?: string
+    logoAlt?: string
+    logoHref?: string
 }
 
-const {
-  logoAlt = 'Logopedie v domácím prostředí',
-  logoHref = '/',
-} = Astro.props;
+const { logoAlt = 'Logopedie v domácím prostředí', logoHref = '/' } =
+    Astro.props
 
 const items = [
-  { label: 'Úvod', href: '/' },
-  { label: 'O mně', href: '/o-mne' },
-  { label: 'Co nabízím', href: '/co-nabizim' },
-  { label: 'Vzdělání', href: '/vzdelani' },
-  { label: 'Ceník', href: '/cenik' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Kontakt', href: '/kontakt' },
-];
+    { label: 'Úvod', href: '/' },
+    { label: 'O mně', href: '/o-mne' },
+    { label: 'Co nabízím', href: '/co-nabizim' },
+    { label: 'Vzdělání', href: '/vzdelani' },
+    { label: 'Ceník', href: '/cenik' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Kontakt', href: '/kontakt' },
+]
 
-const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/'
 
 const isActive = (href: string) => {
-  if (href === '/') return pathname === '/';
-  return pathname === href || pathname.startsWith(href + '/');
-};
+    if (href === '/') return pathname === '/'
+    return pathname === href || pathname.startsWith(href + '/')
+}
 ---
-<header id="sp-header">
-  <div class="container">
-    <div class="container-inner">
-      <div class="row">
-        <!-- Logo -->
-        <div id="sp-logo" class="col-8 col-sm-4 col-md-4 col-lg-3">
-          <div class="sp-column d-flex align-items-center">
-            <a
-              id="offcanvas-toggler"
-              aria-label="Navigace"
-              title="Navigace"
-              class="offcanvas-toggler-left offcanvas offcanvas-toggler-secondary d-flex d-lg-none"
-              href="#"
-            >
-              <div class="burger-icon" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </a>
-            <div class="logo">
-              <a href={logoHref}>
-                <Image
-                  class="logo-image"
-                  src={retinaLogo}
-                  alt={logoAlt}
-                  height={64}
-                  densities={[1, 2]}
-                  loading="eager"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Menu -->
-        <div id="sp-menu" class="col-4 col-sm-3 col-md-4 col-lg-9">
-          <div class="sp-column d-flex align-items-center justify-content-end">
-            <nav class="sp-megamenu-wrapper d-flex" role="navigation" aria-label="Hlavní navigace">
-              <ul class="sp-megamenu-parent menu-animation-fade-down d-none d-lg-block">
-                {items.map((item) => (
-                  <li class={`sp-menu-item${isActive(item.href) ? ' active current-item' : ''}`}>
-                    <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+<header id="sp-header">
+    <div class="container">
+        <div class="container-inner">
+            <div class="row">
+                <!-- Logo -->
+                <div id="sp-logo" class="col-8 col-sm-4 col-md-4 col-lg-3">
+                    <div class="sp-column d-flex align-items-center">
+                        <a
+                            id="offcanvas-toggler"
+                            aria-label="Navigace"
+                            title="Navigace"
+                            class="offcanvas-toggler-left offcanvas offcanvas-toggler-secondary d-flex d-lg-none"
+                            href="#"
+                        >
+                            <div class="burger-icon" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <div class="logo">
+                            <a href={logoHref}>
+                                <Image
+                                    class="logo-image"
+                                    src={retinaLogo}
+                                    alt={logoAlt}
+                                    height={64}
+                                    densities={[1, 2]}
+                                    loading="eager"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div id="sp-menu" class="col-4 col-sm-3 col-md-4 col-lg-9">
+                    <div class="sp-column d-flex align-items-center justify-content-end">
+                        <nav
+                            class="sp-megamenu-wrapper d-flex"
+                            role="navigation"
+                            aria-label="Hlavní navigace"
+                        >
+                            <ul class="sp-megamenu-parent menu-animation-fade-down d-none d-lg-block">
+                                {items.map((item) => (
+                                    <li
+                                        class={`sp-menu-item${isActive(item.href) ? ' active current-item' : ''}`}
+                                    >
+                                        <a
+                                            href={item.href}
+                                            aria-current={
+                                                isActive(item.href)
+                                                    ? 'page'
+                                                    : undefined
+                                            }
+                                        >
+                                            {item.label}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggler = document.getElementById('offcanvas-toggler');
-    const offcanvas = document.querySelector('.offcanvas-menu');
-    const overlay = document.querySelector('.offcanvas-overlay');
-    const closeBtn = document.querySelector('.close-offcanvas');
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggler = document.getElementById('offcanvas-toggler')
+        const offcanvas = document.querySelector('.offcanvas-menu')
+        const overlay = document.querySelector('.offcanvas-overlay')
+        const closeBtn = document.querySelector('.close-offcanvas')
 
-    const open = () => {
-      offcanvas?.classList.add('offcanvas-active');
-      overlay?.classList.add('active');
-      document.body.classList.add('offcanvas-active');
-    };
-    const close = () => {
-      offcanvas?.classList.remove('offcanvas-active');
-      overlay?.classList.remove('active');
-      document.body.classList.remove('offcanvas-active');
-    };
+        const open = () => {
+            offcanvas?.classList.add('offcanvas-active')
+            overlay?.classList.add('active')
+            document.body.classList.add('offcanvas-active')
+        }
+        const close = () => {
+            offcanvas?.classList.remove('offcanvas-active')
+            overlay?.classList.remove('active')
+            document.body.classList.remove('offcanvas-active')
+        }
 
-    toggler?.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (offcanvas?.classList.contains('offcanvas-active')) close();
-      else open();
-    });
-    closeBtn?.addEventListener('click', (e) => {
-      e.preventDefault();
-      close();
-    });
-    overlay?.addEventListener('click', close);
-  });
+        toggler?.addEventListener('click', (e) => {
+            e.preventDefault()
+            if (offcanvas?.classList.contains('offcanvas-active')) close()
+            else open()
+        })
+        closeBtn?.addEventListener('click', (e) => {
+            e.preventDefault()
+            close()
+        })
+        overlay?.addEventListener('click', close)
+    })
 </script>

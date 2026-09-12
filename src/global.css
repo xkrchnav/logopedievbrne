@@ -36,10 +36,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-email::before { content: '\e900'; }
-.icon-wall-clock::before { content: '\e901'; }
-.icon-location::before { content: '\e916'; }
-.icon-user::before { content: '\e918'; }
+.icon-email::before {
+  content: '\e900';
+}
+.icon-wall-clock::before {
+  content: '\e901';
+}
+.icon-location::before {
+  content: '\e916';
+}
+.icon-user::before {
+  content: '\e918';
+}
 
 /* --------------------------------------------------------------------------
    Design tokens (Helix preset5)
@@ -1182,9 +1190,15 @@ body img {
 /* --------------------------------------------------------------------------
    Utilities
    -------------------------------------------------------------------------- */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
 
 .visually-hidden {
   position: absolute;

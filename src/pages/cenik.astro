@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 const pricing = [
     {
-        description: 'Vstupní a navazující konzultace krátká (30 min.), např. u dg. dyslalie, logopedické poradenství',
+        description:
+            'Vstupní a navazující konzultace krátká (30 min.), např. u dg. dyslalie, logopedické poradenství',
         price: '600 Kč/30 min.',
     },
     {
@@ -15,15 +16,18 @@ const pricing = [
         price: '500 Kč',
     },
     {
-        description: 'Zpráva z konzultace: jedná se o podrobnou zprávu pro Vaši osobní potřebu, o průběhu aktuální logopedické intervence, kde Vám např. popíšu jaké pomůcky jsme použili a za jakým účelem aj. Tato zpráva Vám poslouží jako návod pro práci s dítětem doma případně ve školském zařízení, ale nebude podkladem pro žádná další odborná vyšetření.',
+        description:
+            'Zpráva z konzultace: jedná se o podrobnou zprávu pro Vaši osobní potřebu, o průběhu aktuální logopedické intervence, kde Vám např. popíšu jaké pomůcky jsme použili a za jakým účelem aj. Tato zpráva Vám poslouží jako návod pro práci s dítětem doma případně ve školském zařízení, ale nebude podkladem pro žádná další odborná vyšetření.',
         price: '',
     },
     {
-        description: 'Shrnující zpráva z logopedie na vyžádání, slouží jako podklad pro další odborná vyšetření',
+        description:
+            'Shrnující zpráva z logopedie na vyžádání, slouží jako podklad pro další odborná vyšetření',
         price: '1000 Kč',
     },
     {
-        description: 'Storno poplatek za předem neomluvený termín logopedie z jiných než zdravotních důvodů',
+        description:
+            'Storno poplatek za předem neomluvený termín logopedie z jiných než zdravotních důvodů',
         price: '500 Kč',
     },
 ]
@@ -33,12 +37,18 @@ const notes = [
     'Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.',
 ]
 ---
+
 <BaseLayout title="Ceník" description="Ceník služeb">
     <section class="sppb-section" style="padding: 120px 0 0;">
         <div class="container">
             <div class="cenik-valid">platný od 1.3.2023</div>
             <h2 class="cenik-title">Ceník</h2>
-            <p class="cenik-intro">Uvedené ceny jsou orientační tzn. stanovení konečné částky je individuální. V ceně je vždy zohledněna náročnost spolupráce s klientem, rozsah obtíží, frekvence návštěv, vzájemná domluva a množství pracovních materiálů předaných pro domácí použití.</p>
+            <p class="cenik-intro">
+                Uvedené ceny jsou orientační tzn. stanovení konečné částky je
+                individuální. V ceně je vždy zohledněna náročnost spolupráce s
+                klientem, rozsah obtíží, frekvence návštěv, vzájemná domluva a
+                množství pracovních materiálů předaných pro domácí použití.
+            </p>
         </div>
     </section>
 
@@ -62,7 +72,10 @@ const notes = [
             </table>
 
             <hr />
-            <p>Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.</p>
+            <p>
+                Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800.
+                Upřednostňuji platbu v hotovosti.
+            </p>
             <h4 class="cenik-notes-title">Pozn.:</h4>
             <ul class="icon-list">
                 {notes.map((note) => (

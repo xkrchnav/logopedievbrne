@@ -1,95 +1,131 @@
 ---
 // Replicates the Joomla footer (#sp-footer) built with SP Page Builder.
-const year = new Date().getFullYear();
+const year = new Date().getFullYear()
 
 const menu = [
-  { label: 'Úvod', href: '/' },
-  { label: 'O mně', href: '/o-mne' },
-  { label: 'Co nabízím', href: '/co-nabizim' },
-  { label: 'Vzdělání', href: '/vzdelani' },
-  { label: 'Ceník', href: '/cenik' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Kontakt', href: '/kontakt' },
-];
+    { label: 'Úvod', href: '/' },
+    { label: 'O mně', href: '/o-mne' },
+    { label: 'Co nabízím', href: '/co-nabizim' },
+    { label: 'Vzdělání', href: '/vzdelani' },
+    { label: 'Ceník', href: '/cenik' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Kontakt', href: '/kontakt' },
+]
 ---
+
 <footer id="sp-footer">
-  <div class="row">
-    <div id="sp-footer1" class="col-lg-12">
-      <div class="sp-column">
-        <div class="sp-module">
-          <div class="sp-module-content">
-            <div class="page-content">
-              <section class="sppb-section footer-top">
-                <div class="sppb-row-container container">
-                  <div class="sppb-row">
-                    <div class="sppb-row-column footer-col">
-                      <h5 class="sppb-addon-title">Logopedie Brno<br />Mgr. Jitka Rotscheinová</h5>
-                      <div class="sppb-addon-content">
-                        <ul>
-                          {menu.map((item) => (
-                            <li><a href={item.href}>{item.label}</a></li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+    <div class="row">
+        <div id="sp-footer1" class="col-lg-12">
+            <div class="sp-column">
+                <div class="sp-module">
+                    <div class="sp-module-content">
+                        <div class="page-content">
+                            <section class="sppb-section footer-top">
+                                <div class="sppb-row-container container">
+                                    <div class="sppb-row">
+                                        <div class="sppb-row-column footer-col">
+                                            <h5 class="sppb-addon-title">
+                                                Logopedie Brno
+                                                <br />
+                                                Mgr. Jitka Rotscheinová
+                                            </h5>
+                                            <div class="sppb-addon-content">
+                                                <ul>
+                                                    {menu.map((item) => (
+                                                        <li>
+                                                            <a href={item.href}>
+                                                                {item.label}
+                                                            </a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
 
-                    <div class="sppb-row-column footer-col">
-                      <h4 class="sppb-addon-title">Kontakt:</h4>
-                      <div class="sppb-addon-content">
-                        <p>Mgr. Jitka Rotscheinová<br />Logoped, speciální pedagog</p>
-                      </div>
-                      <h6 class="sppb-addon-title">
-                        mobil: 737 365 338<br />
-                        info@logopedievbrne.cz<br />
-                        IČO:&nbsp;68629788
-                      </h6>
-                      <div class="sppb-addon-content">
-                        <p>Pokud hovor nepřijímám, pravděpodobně zrovna pracuji s klientem a ozvu se vám později (lze také poslat SMS či e-mail). Služby poskytuji pouze po předchozím telefonickém objednání. Čas konzultace dle vzájemné dohody.</p>
-                      </div>
-                    </div>
+                                        <div class="sppb-row-column footer-col">
+                                            <h4 class="sppb-addon-title">
+                                                Kontakt:
+                                            </h4>
+                                            <div class="sppb-addon-content">
+                                                <p>
+                                                    Mgr. Jitka Rotscheinová
+                                                    <br />
+                                                    Logoped, speciální pedagog
+                                                </p>
+                                            </div>
+                                            <h6 class="sppb-addon-title">
+                                                mobil: 737 365 338
+                                                <br />
+                                                info@logopedievbrne.cz
+                                                <br />
+                                                IČO:&nbsp;68629788
+                                            </h6>
+                                            <div class="sppb-addon-content">
+                                                <p>
+                                                    Pokud hovor nepřijímám,
+                                                    pravděpodobně zrovna pracuji
+                                                    s klientem a ozvu se vám
+                                                    později (lze také poslat SMS
+                                                    či e-mail). Služby poskytuji
+                                                    pouze po předchozím
+                                                    telefonickém objednání. Čas
+                                                    konzultace dle vzájemné
+                                                    dohody.
+                                                </p>
+                                            </div>
+                                        </div>
 
-                    <div class="sppb-row-column footer-col">
-                      <h4 class="sppb-addon-title">Sledujte nás:</h4>
-                      <div class="sppb-addon-content">
-                        <div
-                          class="fb-page"
-                          data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78"
-                          data-tabs=""
-                          data-width=""
-                          data-height=""
-                          data-small-header="false"
-                          data-adapt-container-width="true"
-                          data-hide-cover="false"
-                          data-show-facepile="true"
-                        >
-                          <blockquote
-                            cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78"
-                            class="fb-xfbml-parse-ignore"
-                          >
-                            <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
-                          </blockquote>
+                                        <div class="sppb-row-column footer-col">
+                                            <h4 class="sppb-addon-title">
+                                                Sledujte nás:
+                                            </h4>
+                                            <div class="sppb-addon-content">
+                                                <div
+                                                    class="fb-page"
+                                                    data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78"
+                                                    data-tabs=""
+                                                    data-width=""
+                                                    data-height=""
+                                                    data-small-header="false"
+                                                    data-adapt-container-width="true"
+                                                    data-hide-cover="false"
+                                                    data-show-facepile="true"
+                                                >
+                                                    <blockquote
+                                                        cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78"
+                                                        class="fb-xfbml-parse-ignore"
+                                                    >
+                                                        <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">
+                                                            Logopedie v domácím
+                                                            prostředí
+                                                        </a>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="sppb-section footer-copyright">
+                                <div class="sppb-row-container container">
+                                    <div class="sppb-row">
+                                        <div class="sppb-row-column">
+                                            <div class="sppb-addon-content">
+                                                <p>
+                                                    © {year} Mgr. Jitka
+                                                    Rotscheinová. Všechna práva
+                                                    vyhrazena.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </section>
-
-              <section class="sppb-section footer-copyright">
-                <div class="sppb-row-container container">
-                  <div class="sppb-row">
-                    <div class="sppb-row-column">
-                      <div class="sppb-addon-content">
-                        <p>© {year} Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </footer>

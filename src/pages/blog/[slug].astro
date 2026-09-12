@@ -1,36 +1,55 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
-import { getCollection, render } from 'astro:content';
+import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+    const posts = await getCollection('blog')
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }))
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+const { post } = Astro.props
+const { Content } = await render(post)
 ---
+
 <BaseLayout
     title={post.data.title}
     description={post.data.description}
     pageTitle="Blog"
-    breadcrumbs={[{ label: 'Titulní stránka', href: '/' }, { label: 'Blog', href: '/blog' }, { label: post.data.title }]}
+    breadcrumbs={[
+        { label: 'Titulní stránka', href: '/' },
+        { label: 'Blog', href: '/blog' },
+        { label: post.data.title },
+    ]}
 >
     <section class="blog-detail">
         <div class="container">
-            <div class="article-details" itemscope itemtype="https://schema.org/Article">
+            <div
+                class="article-details"
+                itemscope
+                itemtype="https://schema.org/Article"
+            >
                 <div class="article-header">
                     <h1 itemprop="headline">{post.data.title}</h1>
                 </div>
 
                 <div class="article-info">
-                    <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
-                        <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
-                            {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    <span
+                        class="published"
+                        title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}
+                    >
+                        <time
+                            datetime={post.data.pubDate.toISOString()}
+                            itemprop="datePublished"
+                        >
+                            {post.data.pubDate.toLocaleDateString('cs-CZ', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                            })}
                         </time>
                     </span>
                 </div>
@@ -57,7 +76,9 @@ const { Content } = await render(post);
                         <span>Štítky:</span>
                         <ul>
                             {post.data.tags.map((tag) => (
-                                <li key={tag}><a href={`/blog?tag=${tag}`}>{tag}</a></li>
+                                <li key={tag}>
+                                    <a href={`/blog?tag=${tag}`}>{tag}</a>
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -65,7 +86,9 @@ const { Content } = await render(post);
             </div>
 
             <div class="article-navigation">
-                <a href="/blog" class="btn btn-back">&larr; Zpět na blog</a>
+                <a href="/blog" class="btn btn-back">
+                    &larr; Zpět na blog
+                </a>
             </div>
         </div>
     </section>

@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
-import { getCollection } from 'astro:content';
+import { getCollection } from 'astro:content'
 
-const posts = await getCollection('blog');
-posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = await getCollection('blog')
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
+
 <BaseLayout
     title="Blog"
     description="Blog logopedie"
@@ -19,7 +20,12 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
                     <div class="row">
                         {posts.map((post) => (
                             <div class="col-lg-4">
-                                <div class="article" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+                                <div
+                                    class="article"
+                                    itemprop="blogPost"
+                                    itemscope
+                                    itemtype="https://schema.org/BlogPosting"
+                                >
                                     {post.data.heroImage && (
                                         <div class="article-intro-image float-left">
                                             <a href={`/blog/${post.id}`}>
@@ -38,14 +44,28 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
                                     <div class="article-body">
                                         <div class="article-header">
                                             <h2>
-                                                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                                                <a href={`/blog/${post.id}`}>
+                                                    {post.data.title}
+                                                </a>
                                             </h2>
                                         </div>
 
                                         <div class="article-info">
-                                            <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
-                                                <time datetime={post.data.pubDate.toISOString()}>
-                                                    {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                            <span
+                                                class="published"
+                                                title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}
+                                            >
+                                                <time
+                                                    datetime={post.data.pubDate.toISOString()}
+                                                >
+                                                    {post.data.pubDate.toLocaleDateString(
+                                                        'cs-CZ',
+                                                        {
+                                                            day: 'numeric',
+                                                            month: 'long',
+                                                            year: 'numeric',
+                                                        },
+                                                    )}
                                                 </time>
                                             </span>
                                         </div>
@@ -55,7 +75,11 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
                                         </div>
 
                                         <div class="readmore">
-                                            <a href={`/blog/${post.id}`} itemprop="url" aria-label={`Číst dál … ${post.data.title}`}>
+                                            <a
+                                                href={`/blog/${post.id}`}
+                                                itemprop="url"
+                                                aria-label={`Číst dál … ${post.data.title}`}
+                                            >
                                                 Číst dál …
                                             </a>
                                         </div>

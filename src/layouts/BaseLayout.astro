@@ -6,226 +6,299 @@ import OffcanvasMenu from '../components/header/OffcanvasMenu.astro'
 import Footer from '../components/footer/Footer.astro'
 
 interface Breadcrumb {
-  label: string
-  href?: string
+    label: string
+    href?: string
 }
 
 interface LayoutProps {
-  title: string
-  description?: string
-  showHeader?: boolean
-  showFooter?: boolean
-  pageTitle?: string
-  pageTitleTag?: 'h1' | 'h2' | 'h3'
-  breadcrumbs?: Breadcrumb[]
-  bodyClass?: string
+    title: string
+    description?: string
+    showHeader?: boolean
+    showFooter?: boolean
+    pageTitle?: string
+    pageTitleTag?: 'h1' | 'h2' | 'h3'
+    breadcrumbs?: Breadcrumb[]
+    bodyClass?: string
 }
 
 const {
-  title,
-  description,
-  showHeader = true,
-  showFooter = true,
-  pageTitle,
-  pageTitleTag = 'h1',
-  breadcrumbs = [],
-  bodyClass = '',
-} = Astro.props;
+    title,
+    description,
+    showHeader = true,
+    showFooter = true,
+    pageTitle,
+    pageTitleTag = 'h1',
+    breadcrumbs = [],
+    bodyClass = '',
+} = Astro.props
 
-const PageTitleTag = pageTitleTag;
+const PageTitleTag = pageTitleTag
 
 const bodyClasses = [
-  'site',
-  'helix-ultimate',
-  'hu',
-  'com_sppagebuilder',
-  'com-sppagebuilder',
-  'view-page',
-  'layout-default',
-  'task-none',
-  'cs-cz',
-  'ltr',
-  'layout-fluid',
-  'offcanvas-init',
-  'offcanvs-position-left',
-  bodyClass,
-].filter(Boolean).join(' ');
+    'site',
+    'helix-ultimate',
+    'hu',
+    'com_sppagebuilder',
+    'com-sppagebuilder',
+    'view-page',
+    'layout-default',
+    'task-none',
+    'cs-cz',
+    'ltr',
+    'layout-fluid',
+    'offcanvas-init',
+    'offcanvs-position-left',
+    bodyClass,
+]
+    .filter(Boolean)
+    .join(' ')
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="cs-cz" dir="ltr">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content="Astro" />
-    <title>{title}</title>
-    <meta name="description" content={description || "Logopedie v Brně - Mgr. Jitka Rotscheinová"} />
-    <meta property="og:locale" content="cs_CZ" />
-    <meta property="og:site_name" content="Logopedie v Brně" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description || "Profesionální logopedická péče v domácím prostředí"} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content="Astro" />
+        <title>{title}</title>
+        <meta
+            name="description"
+            content={
+                description || 'Logopedie v Brně - Mgr. Jitka Rotscheinová'
+            }
+        />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:site_name" content="Logopedie v Brně" />
+        <meta property="og:title" content={title} />
+        <meta
+            property="og:description"
+            content={
+                description ||
+                'Profesionální logopedická péče v domácím prostředí'
+            }
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
 
-    <!-- Template assets (same load order as the original Joomla template) -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/css/v4-shims.min.css" />
-    <link rel="stylesheet" href="/css/custom-animate.css" />
-</head>
-<body class={bodyClasses}>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v19.0&appId=332665750219618" nonce="D5UjmlXR"></script>
+        <!-- Template assets (same load order as the original Joomla template) -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/css/v4-shims.min.css" />
+        <link rel="stylesheet" href="/css/custom-animate.css" />
+    </head>
+    <body class={bodyClasses}>
+        <div id="fb-root"></div>
+        <script
+            async
+            defer
+            crossorigin="anonymous"
+            src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v19.0&appId=332665750219618"
+            nonce="D5UjmlXR"
+        ></script>
+        <div class="body-wrapper">
+            <div class="body-innerwrapper">
+                {showHeader && (
+                    <>
+                        <TopBar />
+                        <Header />
+                    </>
+                )}
 
-    <div class="body-wrapper">
-        <div class="body-innerwrapper">
-            {showHeader && (
-                <>
-                    <TopBar />
-                    <Header />
-                </>
-            )}
-
-            <section id="sp-section-3">
-                <div class="row">
-                    <div id="sp-title" class="col-lg-12">
-                        <div class="sp-column">
-                            {pageTitle && (
-                                <div class="sp-page-title">
-                                    <div class="container">
-                                        <PageTitleTag class="sp-page-title-heading">{pageTitle}</PageTitleTag>
-                                        {breadcrumbs.length > 0 && (
-                                            <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
-                                                <ol class="mod-breadcrumbs breadcrumb px-3 py-2">
-                                                    <li class="mod-breadcrumbs__divider float-start">
-                                                        <span class="divider icon-location icon-fw" aria-hidden="true"></span>
-                                                    </li>
-                                                    {breadcrumbs.map((crumb, i) => (
-                                                        <li class={`mod-breadcrumbs__item breadcrumb-item${i === breadcrumbs.length - 1 ? ' active' : ''}`}>
-                                                            {crumb.href
-                                                                ? <a href={crumb.href} class="pathway"><span>{crumb.label}</span></a>
-                                                                : <span>{crumb.label}</span>}
+                <section id="sp-section-3">
+                    <div class="row">
+                        <div id="sp-title" class="col-lg-12">
+                            <div class="sp-column">
+                                {pageTitle && (
+                                    <div class="sp-page-title">
+                                        <div class="container">
+                                            <PageTitleTag class="sp-page-title-heading">
+                                                {pageTitle}
+                                            </PageTitleTag>
+                                            {breadcrumbs.length > 0 && (
+                                                <nav
+                                                    class="mod-breadcrumbs__wrapper"
+                                                    aria-label="Breadcrumbs"
+                                                >
+                                                    <ol class="mod-breadcrumbs breadcrumb px-3 py-2">
+                                                        <li class="mod-breadcrumbs__divider float-start">
+                                                            <span
+                                                                class="divider icon-location icon-fw"
+                                                                aria-hidden="true"
+                                                            />
                                                         </li>
-                                                    ))}
-                                                </ol>
-                                            </nav>
-                                        )}
+                                                        {breadcrumbs.map(
+                                                            (crumb, i) => (
+                                                                <li
+                                                                    class={`mod-breadcrumbs__item breadcrumb-item${i === breadcrumbs.length - 1 ? ' active' : ''}`}
+                                                                >
+                                                                    {crumb.href ? (
+                                                                        <a
+                                                                            href={
+                                                                                crumb.href
+                                                                            }
+                                                                            class="pathway"
+                                                                        >
+                                                                            <span>
+                                                                                {
+                                                                                    crumb.label
+                                                                                }
+                                                                            </span>
+                                                                        </a>
+                                                                    ) : (
+                                                                        <span>
+                                                                            {
+                                                                                crumb.label
+                                                                            }
+                                                                        </span>
+                                                                    )}
+                                                                </li>
+                                                            ),
+                                                        )}
+                                                    </ol>
+                                                </nav>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section id="sp-main-body">
-                <div class="row">
-                    <div id="sp-component" class="col-lg-12">
-                        <div class="sp-column">
-                            <div id="system-message-container" aria-live="polite"></div>
-                            <slot />
+                <section id="sp-main-body">
+                    <div class="row">
+                        <div id="sp-component" class="col-lg-12">
+                            <div class="sp-column">
+                                <div
+                                    id="system-message-container"
+                                    aria-live="polite"
+                                ></div>
+                                <slot />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {showFooter && <Footer />}
+                {showFooter && <Footer />}
+            </div>
         </div>
-    </div>
 
-    <!-- Off Canvas Menu -->
-    <div class="offcanvas-overlay"></div>
-    <OffcanvasMenu />
+        <!-- Off Canvas Menu -->
+        <div class="offcanvas-overlay"></div>
+        <OffcanvasMenu />
 
-    <!-- Cookie Consent Bar -->
-    <div class="cookies-infobar">
-        Tento web používá k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím souhlasíte.
-        <div class="cookies-infobar_wrapper">
-            <a href="#" id="cookies-infobar-close" class="cookies-infobar_btn">Souhlasím</a>
-            <a href="about:blank" class="cookies-infobar_btn">Nesouhlasím</a>
+        <!-- Cookie Consent Bar -->
+        <div class="cookies-infobar">
+            Tento web používá k poskytování služeb, personalizaci reklam a
+            analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím
+            souhlasíte.
+            <div class="cookies-infobar_wrapper">
+                <a
+                    href="#"
+                    id="cookies-infobar-close"
+                    class="cookies-infobar_btn"
+                >
+                    Souhlasím
+                </a>
+                <a href="about:blank" class="cookies-infobar_btn">
+                    Nesouhlasím
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!-- Go to top -->
-    <a href="#" class="sp-scroll-up" aria-label="Nahoru"><span class="fas fa-angle-up" aria-hidden="true"></span></a>
+        <!-- Go to top -->
+        <a href="#" class="sp-scroll-up" aria-label="Nahoru">
+            <span class="fas fa-angle-up" aria-hidden="true"></span>
+        </a>
 
-    <script>
-        // Cookie Consent
-        (function () {
-            var infoBar = document.querySelector('.cookies-infobar');
-            var btnAccept = document.querySelector('#cookies-infobar-close');
-            if (!infoBar || !btnAccept) return;
+        <script>
+            // Cookie Consent
+            ;(function () {
+                var infoBar = document.querySelector('.cookies-infobar')
+                var btnAccept = document.querySelector('#cookies-infobar-close')
+                if (!infoBar || !btnAccept) return
 
-            function hideInfobar() {
-                infoBar.className = infoBar.classList.value + ' cookies-infobar_accepted';
-            }
-
-            function wasAccepted() {
-                return checkCookie() === '1';
-            }
-
-            function checkCookie() {
-                var name = 'cookieInfoHidden=';
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i];
-                    while (cookie.charAt(0) == ' ') {
-                        cookie = cookie.substring(1);
-                    }
-                    if (cookie.indexOf(name) === 0) {
-                        return cookie.substring(name.length, cookie.length);
-                    }
+                function hideInfobar() {
+                    infoBar.className =
+                        infoBar.classList.value + ' cookies-infobar_accepted'
                 }
-                return '';
-            }
 
-            function saveAcceptInCookies(daysOfValidity) {
-                var now = new Date();
-                var time = now.getTime() + daysOfValidity * 24 * 60 * 60 * 1000;
-                var newTime = new Date(now.setTime(time));
-                newTime = newTime.toUTCString();
-                document.cookie = 'cookieInfoHidden=1; expires=' + newTime + '; path=/';
-            }
+                function wasAccepted() {
+                    return checkCookie() === '1'
+                }
 
-            if (wasAccepted()) {
-                hideInfobar();
-            } else {
-                btnAccept.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    hideInfobar();
-                    saveAcceptInCookies(7);
-                });
-            }
-        })();
-
-        // Scroll to Top
-        document.addEventListener('DOMContentLoaded', () => {
-            const scrollUp = document.querySelector('.sp-scroll-up');
-            if (scrollUp) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        scrollUp.classList.add('visible');
-                    } else {
-                        scrollUp.classList.remove('visible');
+                function checkCookie() {
+                    var name = 'cookieInfoHidden='
+                    var cookies = document.cookie.split(';')
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i]
+                        while (cookie.charAt(0) == ' ') {
+                            cookie = cookie.substring(1)
+                        }
+                        if (cookie.indexOf(name) === 0) {
+                            return cookie.substring(name.length, cookie.length)
+                        }
                     }
-                });
-                scrollUp.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-        });
-    </script>
+                    return ''
+                }
 
-    <script>
-        // Google Analytics
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-ZHHFQD5G1V');
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHHFQD5G1V"></script>
-</body>
+                function saveAcceptInCookies(daysOfValidity) {
+                    var now = new Date()
+                    var time =
+                        now.getTime() + daysOfValidity * 24 * 60 * 60 * 1000
+                    var newTime = new Date(now.setTime(time))
+                    newTime = newTime.toUTCString()
+                    document.cookie =
+                        'cookieInfoHidden=1; expires=' + newTime + '; path=/'
+                }
+
+                if (wasAccepted()) {
+                    hideInfobar()
+                } else {
+                    btnAccept.addEventListener('click', function (e) {
+                        e.preventDefault()
+                        hideInfobar()
+                        saveAcceptInCookies(7)
+                    })
+                }
+            })()
+
+            // Scroll to Top
+            document.addEventListener('DOMContentLoaded', () => {
+                const scrollUp = document.querySelector('.sp-scroll-up')
+                if (scrollUp) {
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 300) {
+                            scrollUp.classList.add('visible')
+                        } else {
+                            scrollUp.classList.remove('visible')
+                        }
+                    })
+                    scrollUp.addEventListener('click', (e) => {
+                        e.preventDefault()
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    })
+                }
+            })
+        </script>
+        <script>
+            // Google Analytics
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+            gtag('config', 'G-ZHHFQD5G1V')
+        </script>
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-ZHHFQD5G1V"
+        ></script>
+    </body>
 </html>
