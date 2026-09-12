@@ -611,7 +611,7 @@ body img {
   height: 100%;
   position: fixed;
   top: 60px;
-  right: -400px;
+  left: -400px;
   overflow: auto;
   transition: all 0.4s;
   z-index: 10000;
@@ -620,7 +620,7 @@ body img {
 }
 
 .offcanvas-menu.offcanvas-active {
-  right: 0;
+  left: 0;
 }
 
 .close-offcanvas {
