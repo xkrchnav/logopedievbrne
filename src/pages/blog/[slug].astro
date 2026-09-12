@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Header from '../../components/header/Header.astro'
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{post.data.title}</title>
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content={post.data.heroImage ? `https://logopedievbrne.cz${post.data.heroImage}` : ''} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={post.data.title} />
+    <meta name="twitter:description" content={post.data.description} />
+</head>
+<body>
+    <Header title={post.data.title} description="Blog logopedie" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
+
+    <main class="container">
+        <section class="blog-detail">
+            <div class="container-inner">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <article itemscope itemtype="https://schema.org/BlogPosting">
+                            <div class="article-header">
+                                <h1 class="sp-page-title-heading" itemprop="headline">{post.data.title}</h1>
+                            </div>
+                            
+                            <div class="article-info">
+                                <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
+                                    <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
+                                        {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                    </time>
+                                </span>
+                                {post.data.updatedDate && (
+                                    <span class="updated" title={`Aktualizováno: ${post.data.updatedDate.toLocaleDateString('cs-CZ')}`}>
+                                        <time datetime={post.data.updatedDate.toISOString()} itemprop="dateModified">
+                                            (Aktualizováno: {post.data.updatedDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })})
+                                        </time>
+                                    </span>
+                                )}
+                            </div>
+                            
+                            {post.data.heroImage && (
+                                <div class="article-image">
+                                    <img src={post.data.heroImage} alt={post.data.title} itemprop="image" loading="lazy" />
+                                </div>
+                            )}
+                            
+                            <div class="article-content" itemprop="articleBody">
+                                <Content />
+                            </div>
+                            
+                            {post.data.tags && post.data.tags.length > 0 && (
+                                <div class="article-tags">
+                                    <span>Štítky:</span>
+                                    <ul>
+                                        {post.data.tags.map((tag) => (
+                                            <li key={tag}><a href={`/blog?tag=${tag}`}>{tag}</a></li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </article>
+                        
+                        <div class="article-navigation">
+                            <a href="/blog" class="btn btn-back">&larr; Zpět na blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

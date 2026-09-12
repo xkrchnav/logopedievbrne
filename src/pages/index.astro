@@ -36,9 +36,9 @@ const homeData = {
         'Orofaciální stimulace pasivní (masáž obličeje)',
         'Orofaciální stimulace aktivní - rozvoj hybnosti rtů, čelisti a jazyka s využitím speciálních logopedických pomůcek i bez, proškolení pro práci s dítětem v domácím prostředí',
         'Dechová, fonační a artikulační cvičení',
-        'Nácvík komunikace s využití Znaku do řeči',
-        'Nácvík komunikace s využití obrázkové komunikace, včetně VOKS (PECS)',
-        'Vedení a způsob využití zážitkového deníku pro podporu rozvoje komunikační schopnosti',
+        'Nácvík komunikace s využitím Znaku do řeči',
+        'Nácvík komunikace s využitím obrázkové komunikace, včetně VOKS (PECS)',
+        'Vedení a způsob využití zážitkového deníku pro podporu rozvoje komunikačních schopností',
         'Výrobu pomůcek pro domácí použití dle individuálních potřeb a zájmů dítěte',
         'Poradenství v oblasti rozvoje jemné, hrubé motoriky',
         'Psychologickou podporu při výchově a vzdělávání dítěte s postižením',
@@ -59,72 +59,66 @@ const homeData = {
   ]
 }
 ---
-<!DOCTYPE html>
-<html lang="cs-cz">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{homeData.title}</title>
-</head>
-<body>
+<BaseLayout title={homeData.title} description={homeData.subtitle} showHeader={true} showFooter={true}>
     <Header title="Logopedie v Brně" description="Mgr. Jitka Rotscheinová" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
 
     <main class="container">
-        {/* Top Bar */}
-        {homeData.topBar && (
-            <div class="top-bar">
+        <section id="sp-section-3">
+            <div class="sp-page-title">
                 <div class="container">
-                    <div class="address">
-                        <p><a href="mailto:info@logopedievbrne.cz">info@logopedievbrne.cz</a></p>
-                        <p>737 365 338</p>
-                        <p>Po - Pá: 8:00 - 17:30</p>
-                    </div>
+                    <h1 class="sp-page-title-heading">Logopedie v Brně</h1>
                 </div>
             </div>
-        )}
+        </section>
 
-        {/* Hero Section */}
-        {homeData.sections.filter(s => s.type === 'hero').length > 0 && (
-            <section class="hero">
-                <h1>{homeData.title}</h1>
-                <p>{homeData.subtitle}</p>
-                <a href={homeData.sections[0].buttonLink} class="btn">Více o mně</a>
-            </section>
-        )}
-
-        {/* About Section */}
-        {homeData.sections.filter(s => s.type === 'about').length > 0 && (
-            <section class="about">
+        <section id="sp-main-body">
+            {/* Hero Section */}
+            <section class="hero-section">
                 <div class="container">
-                    <h2>O mně</h2>
-                    <p>{homeData.sections.filter(s => s.type === 'about')[0].content}</p>
+                    <h1>Logopedie v domácím prostředí</h1>
+                    <p>Profesionální logopedická péče dětí i dospělých v Brně a okolí. Individuální přístup, dlouholeté zkušenosti a moderní metody.</p>
+                    <a href="/o-mne" class="btn">Více o mně</a>
                 </div>
             </section>
-        )}
 
-        {/* Services Section */}
-        {homeData.sections.filter(s => s.type === 'services').length > 0 && (
+            {/* About Section */}
+            <section class="about">
+                <div class="container">
+                    <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <h2>O mně</h2>
+                            <img src="/images/kdo-jsme.jpg" alt="Mgr. Jitka Rotscheinová" loading="lazy" style="max-width: 100%; border-radius: 4px; margin-bottom: 20px;" />
+                            <div class="about-content">
+                                <p>Od roku 2011 jsem postupně získávala praktické zkušenosti v oboru, v pozici logopedky s lidmi ve věku 3 – 60 let. Nejdříve ve zdravotnictví, potom ve školství a nakonec v sociálních službách. V roce 2019 jsem částečně zahájila svou soukromou praxi, které se plně věnuji od září roku 2022.</p>
+                                <p>Od roku 2021 využívám při práci s klienty vonné esence a tak vznikla první voňavá logopedická pracovna v ČR.</p>
+                                <p>V letech 2017 – 2022 jsem se pravidelně věnovala přednáškám pro rodiče dětí s poruchou autistického spektra a spolupracovala jsem se soukromou MŠ, kde jsem individuálně pracovala s dětmi s vadnou výslovností.</p>
+                                <p>Specializuji se na klienty s opožděným vývojem řeči, s vývojovou dysfázií a na symptomatické poruchy řeči.</p>
+                                <p>Jsem vděčná, že mohu dělat tuto práci takovým způsobem, jakým ji dělám, zcela svobodně a vše individuálně přizpůsobit potřebám klienta. Mohu vám věnovat tolik času, kolik bude třeba.</p>
+                                <p>A dcera? Ta už dávno mluví. Je už dospělá. Mluví hodně a přesto si někdy nerozumíme. Takže už dávno vím, že mnohem důležitější než mluvení je schopnost dorozumět se.</p>
+                                <p>A dál? Dál vám všechno podstatné ráda sdělím osobně dle vašeho přání a potřeb. Hlavně věřím, že výsledky mé práce budou mluvit za mě, udělám pro to maximum a to stejné chci i já od vás. Především spolupráce a otevřenou komunikaci. Pokud říkáte „ano“, stanete se ráda vaší průvodkyní při rozvoji komunikace a budu se těšit na shledanou. Když budete chtít – vaše logopedka Jitka Rotscheinová.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Services Section */}
             <section class="services">
                 <div class="container">
-                    <h2>Co nabízím</h2>
+                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
                     <ul class="service-list">
-                        {homeData.sections.filter(s => s.type === 'services')[0].items.map((item, j) => (
-                            <li key={j}>
-                                <span></span>{item}
-                            </li>
+                        {homeData.sections[2].items.map((item, j) => (
+                            <li key={j}>{item}</li>
                         ))}
                     </ul>
                 </div>
             </section>
-        )}
 
-        {/* Pricing Section */}
-        {homeData.sections.filter(s => s.type === 'pricing').length > 0 && (
+            {/* Pricing Section */}
             <section class="pricing">
                 <div class="container">
-                    <h2>Ceník</h2>
+                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Ceník</h2>
+                    <p style="text-align: center; max-width: 900px; margin: 0 auto 30px;">Platbu přijímám v hotovosti, nebo na účet č. 4009 236 093/0800. Upřednostňuji platbu v hotovosti.</p>
                     <table class="pricing-table">
                         <thead>
                             <tr>
@@ -133,7 +127,7 @@ const homeData = {
                             </tr>
                         </thead>
                         <tbody>
-                            {homeData.sections.filter(s => s.type === 'pricing')[0].items.map((item, j) => (
+                            {homeData.sections[3].items.map((item, j) => (
                                 <tr key={j}>
                                     <td>{item}</td>
                                     <td></td>
@@ -141,45 +135,14 @@ const homeData = {
                             ))}
                         </tbody>
                     </table>
-                </div>
-            </section>
-        )}
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-col">
-                    <h4>Logopedie Brno</h4>
-                    <p>Mgr. Jitka Rotscheinová</p>
-                    <ul>
-                        <li><a href="/">Úvod</a></li>
-                        <li><a href="/o-mne">O mně</a></li>
-                        <li><a href="/co-nabízím">Co nabízím</a></li>
-                        <li><a href="/vzdelani">Vzdělání</a></li>
-                        <li><a href="/ceník">Ceník</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/kontakt">Kontakt</a></li>
+                    <hr style="max-width: 900px; margin: 40px auto; border-color: #ddd;" />
+                    <p style="max-width: 900px; margin: 0 auto;">Pozn.:</p>
+                    <ul style="max-width: 900px; margin: 0 auto; padding-left: 20px;">
+                        <li><span>Neposkytuji zdravotní péči dle zákona č. 372/2011 Sb., O zdravotních službách a podmínkách jejich poskytováním v platném znění.</span></li>
+                        <li><span>Nemám smlouvu s žádnou zdravotní pojišťovnou, proto veškeré platby jsou přímé a k přijetí do péče nepotřebuji žádanku od lékaře.</span></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Kontakt:</h4>
-                    <p>Mgr. Jitka Rotscheinová<br>Logoped, speciální pedagog</p>
-                    <p>mobil: 737 365 338<br>info@logopedievbrne.cz<br>IČO: 68629788</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Sledujte nás:</h4>
-                    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+            </section>
+        </section>
+    </main>
+</BaseLayout>

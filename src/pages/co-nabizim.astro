@@ -4,11 +4,6 @@ import Header from '../components/header/Header.astro'
 
 const coNabizimData = {
   title: 'Co nabízím',
-  topBar: {
-    address: 'info@logopedievbrne.cz',
-    phone: '737 365 338',
-    hours: 'Po - Pá: 8:00 - 17:30'
-  },
   services: [
     'Individuální přístup založený na dlouholetých praktických zkušenostech a teoretických poznatků v oboru logopedie a speciální pedagogiky',
     'Logopedická intervence pro děti a dospělé vždy přizpůsobená aktuálním možnostam a dispozicím klienta s trpělivým a osobním přístupem v domácím prostředí mé pracovny',
@@ -18,9 +13,9 @@ const coNabizimData = {
     'Orofaciální stimulace pasivní (masáž obličeje)',
     'Orofaciální stimulace aktivní - rozvoj hybnosti rtů, čelisti a jazyka s využitím speciálních logopedických pomůcek i bez, proškolení pro práci s dítětem v domácím prostředí',
     'Dechová, fonační a artikulační cvičení',
-    'Nácvík komunikace s využití Znaku do řeči',
-    'Nácvík komunikace s využití obrázkové komunikace, včetně VOKS (PECS)',
-    'Vedení a způsob využití zážitkového deníku pro podporu rozvoje komunikační schopnosti',
+    'Nácvík komunikace s využitím Znaku do řeči',
+    'Nácvík komunikace s využitím obrázkové komunikace, včetně VOKS (PECS)',
+    'Vedení a způsob využití zážitkového deníku pro podporu rozvoje komunikačních schopností',
     'Výrobu pomůcek pro domácí použití dle individuálních potřeb a zájmů dítěte',
     'Četnost logopedických intervencí dle potřeb klienta',
     'Pracovní materiál pro domácí použití např. cvičná slova, obrázky aj.',
@@ -34,66 +29,35 @@ const coNabizimData = {
   ]
 }
 ---
-<!DOCTYPE html>
-<html lang="cs-cz">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{coNabizimData.title}</title>
-</head>
-<body>
+<BaseLayout title={coNabizimData.title} showHeader={true} showFooter={true}>
     <Header title="Co nabízím" description="Služby logopedy" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
 
     <main class="container">
-        <section class="services">
-            <div class="container">
-                <h2>Co nabízím</h2>
-                <ul class="service-list">
-                    {coNabizimData.services.map((item, j) => (
-                        <li key={j}>
-                            <span></span>{item}
-                        </li>
-                    ))}
-                </ul>
+        <section id="sp-section-3">
+            <div class="sp-page-title">
+                <div class="container">
+                    <h1 class="sp-page-title-heading">Co nabízím</h1>
+                    <nav class="mod-breadcrumbs__wrapper" aria-label="Breadcrumbs">
+                        <ol class="mod-breadcrumbs breadcrumb">
+                            <li class="mod-breadcrumbs__item"><a href="/">Titulní stránka</a></li>
+                            <li class="mod-breadcrumbs__item active"><span>Co nabízím</span></li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-col">
-                    <h4>Logopedie Brno</h4>
-                    <p>Mgr. Jitka Rotscheinová</p>
-                    <ul>
-                        <li><a href="/">Úvod</a></li>
-                        <li><a href="/o-mne">O mně</a></li>
-                        <li><a href="/co-nabízím">Co nabízím</a></li>
-                        <li><a href="/vzdelani">Vzdělání</a></li>
-                        <li><a href="/ceník">Ceník</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/kontakt">Kontakt</a></li>
+        <section id="sp-main-body">
+            <section class="services">
+                <div class="container">
+                    <h2 style="text-align: center; margin-bottom: 40px; font-size: 28px;">Co nabízím</h2>
+                    <ul class="service-list">
+                        {coNabizimData.services.map((item, j) => (
+                            <li key={j}>{item}</li>
+                        ))}
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Kontakt:</h4>
-                    <p>Mgr. Jitka Rotscheinová<br>Logoped, speciální pedagog</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Sledujte nás:</h4>
-                    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+            </section>
+        </section>
+    </main>
+</BaseLayout>

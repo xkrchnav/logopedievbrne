@@ -6,8 +6,168 @@ interface LayoutProps {
   description?: string
   showHeader: boolean
   showFooter: boolean
-  children: any
 }
-export const Mkdwn = ({Content}: {Content: any}) => {
-  return <Content />
-}
+
+const { title, description, showHeader, showFooter, children } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="cs-cz" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content="Astro" />
+    <title>{title}</title>
+    <meta name="description" content={description || "Logopedie v Brně - Mgr. Jitka Rotscheinová"} />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="Logopedie v Brně" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description || "Profesionální logopedická péče v domácím prostředí"} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+</head>
+<body class="site helix-ultimate">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v19.0&appId=332665750219618" nonce="D5UjmlXR"></script>
+
+    <div class="body-wrapper">
+        <div class="body-innerwrapper">
+            <slot name="header" />
+            <slot />
+        </div>
+    </div>
+
+    {showFooter && (
+      <footer id="sp-footer">
+        <div class="footer-container">
+          <div class="footer-top">
+            <div class="footer-col">
+              <h4>Logopedie Brno</h4>
+              <p>Mgr. Jitka Rotscheinová</p>
+              <ul>
+                <li><a href="/">Úvod</a></li>
+                <li><a href="/o-mne">O mně</a></li>
+                <li><a href="/co-nabizim">Co nabízím</a></li>
+                <li><a href="/vzdelani">Vzdělání</a></li>
+                <li><a href="/cenik">Ceník</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/kontakt">Kontakt</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Kontakt:</h4>
+              <address>
+                Mgr. Jitka Rotscheinová<br>
+                Logoped, speciální pedagog<br>
+                mobil: 737 365 338<br>
+                info@logopedievbrne.cz<br>
+                IČO: 68629788
+              </address>
+            </div>
+            <div class="footer-col">
+              <h4>Sledujte nás:</h4>
+              <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
+                  <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
+          </div>
+        </div>
+      </footer>
+    )}
+
+    <!-- Cookie Consent Bar -->
+    <div class="cookies-infobar">
+        Tento web používá k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím souhlasíte.
+        <div class="cookies-infobar_wrapper">
+            <a href="#" id="cookies-infobar-close" class="cookies-infobar_btn">Souhlasím</a>
+            <a href="#" class="cookies-infobar_btn">Nesouhlasím</a>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <a href="#" class="sp-scroll-up" aria-label="Nahoru"><span class="fas fa-angle-up" aria-hidden="true">↑</span></a>
+
+    <script>
+        // Cookie Consent
+        (function() {
+            var infoBar = document.querySelector(".cookies-infobar");
+            var btnAccept = document.querySelector("#cookies-infobar-close");
+
+            function hideInfobar() {
+                infoBar.className = infoBar.classList.value + " cookies-infobar_accepted";
+            }
+
+            function wasAccepted() {
+                return checkCookie() === "1";
+            }
+
+            function checkCookie() {
+                var name = "cookieInfoHidden=";
+                var cookies = document.cookie.split(';');
+                for(var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    while (cookie.charAt(0)==' ') {
+                        cookie = cookie.substring(1);
+                    }
+                    if (cookie.indexOf(name) === 0) {
+                        return cookie.substring(name.length, cookie.length);
+                    }
+                }
+                return "";
+            }
+
+            function saveAcceptInCookies(daysOfValidity) {
+                var now = new Date();
+                var time = now.getTime() + (daysOfValidity * 24 * 60 * 60 * 1000);
+                var newTime = new Date(now.setTime(time));
+                newTime = newTime.toUTCString();
+                document.cookie = "cookieInfoHidden=1; expires=" + newTime + "; path=/";
+            }
+
+            if(wasAccepted()) {
+                hideInfobar();
+            } else {
+                btnAccept.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    hideInfobar();
+                    saveAcceptInCookies(7);
+                });
+            }
+        })();
+
+        // Scroll to Top
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollUp = document.querySelector('.sp-scroll-up');
+            if (scrollUp) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        scrollUp.classList.add('visible');
+                    } else {
+                        scrollUp.classList.remove('visible');
+                    }
+                });
+                scrollUp.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // Google Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ZHHFQD5G1V');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHHFQD5G1V"></script>
+</body>
+</html>

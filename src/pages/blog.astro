@@ -1,15 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Header from '../components/header/Header.astro'
+import { getCollection } from 'astro:content';
 
-const blogData = {
-  title: 'Blog',
-  topBar: {
-    address: 'info@logopedievbrne.cz',
-    phone: '737 365 338',
-    hours: 'Po - Pá: 8:00 - 17:30'
-  }
-}
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <!DOCTYPE html>
 <html lang="cs-cz">
@@ -18,7 +13,7 @@ const blogData = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
-    <title>{blogData.title}</title>
+    <title>Blog</title>
 </head>
 <body>
     <Header title="Blog" description="Blog logopedie" logoAlt="Logopedie v domácím prostředí" showTopBar={true} />
@@ -30,41 +25,45 @@ const blogData = {
                     <div class="col-lg-8 mx-auto">
                         <h1 class="sp-page-title-heading">Blog</h1>
                         
-                        <article class="article" itemscope itemtype="https://schema.org/BlogPosting">
-                            <div class="article-intro-image float-left">
-                                <picture class="responsive-image">
-                                    <source type="image/webp" srcset="/media/cached-resp-images/images/2024/02/04/kytickova_320.webp 320w">
-                                    <source type="image/png" srcset="/media/cached-resp-images/images/2024/02/04/kytickova_320.png 320w">
-                                    <img width="512" height="381" data-src="https://logopedievbrne.cz/images/2024/02/04/kytickova.png" alt="Kytičková ambulance" itemprop="thumbnailUrl" decoding="async" loading="lazy" class="lazyload" />
-                                </picture>
-                            </div>
-                            
-                            <div class="article-body">
-                                <div class="article-header">
-                                    <h2>
-                                        <a href="/blog/kytickova-ambulance">
-                                            Kytičková ambulance
-                                        </a>
-                                    </h2>
+                        {posts.map((post) => (
+                            <article class="article" itemscope itemtype="https://schema.org/BlogPosting">
+                                {post.data.heroImage && (
+                                    <div class="article-intro-image float-left">
+                                        <picture class="responsive-image">
+                                            <source type="image/webp" srcset={post.data.heroImage.replace(/\.(png|jpg)$/, '.webp')} />
+                                            <source type="image/png" srcset={post.data.heroImage} />
+                                            <img width="512" height="381" src={post.data.heroImage} alt={post.data.title} itemprop="thumbnailUrl" decoding="async" loading="lazy" />
+                                        </picture>
+                                    </div>
+                                )}
+                                
+                                <div class="article-body">
+                                    <div class="article-header">
+                                        <h2>
+                                            <a href={`/blog/${post.id}`}>
+                                                {post.data.title}
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    
+                                    <div class="article-info">
+                                        <span class="published" title={`Zveřejněno: ${post.data.pubDate.toLocaleDateString('cs-CZ')}`}>
+                                            <time datetime={post.data.pubDate.toISOString()}>
+                                                {post.data.pubDate.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                            </time>
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="article-introtext">
+                                        <p>{post.data.description}</p>
+                                    </div>
                                 </div>
                                 
-                                <div class="article-info">
-                                    <span class="published" title="Zveřejněno: 4.únor 2024">
-                                        <time datetime="2024-02-04T07:28:49+00:00">
-                                            4.únor 2024
-                                        </time>
-                                    </span>
+                                <div class="readmore">
+                                    <a href={`/blog/${post.id}`} itemprop="url" aria-label={`Číst dál ${post.data.title}`}>Číst dál &hellip;</a>
                                 </div>
-                                
-                                <div class="article-introtext">
-                                    <p>S vonnými esencemi Zrození od Evy Kopasové jsem se seznámila „náhodou“. Celkově mě zaujala její práce, o které se zmínila během vzájemného představování na mé přednášce logopedie, kterou navštívila. Po přednášce jsem ji oslovila, zda by mi o své práci a vonných esencích řekla něco víc. Tímto se otevřela naše voňavá spolupráce, která trvá již přes dva roky. Jsem za to velmi vděčná, protože do té doby jsem o možnostech využití „vůní“ v logopedii nevěděla téměř nic, i když jsem po nich už delší čas pátrala.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="readmore">
-                                <a href="/blog/kytickova-ambulance" itemprop="url" aria-label="Číst dál Kytičková ambulance">Číst dál &hellip;</a>
-                            </div>
-                        </article>
+                            </article>
+                        ))}
                         
                         <div class="article-list grid">
                             <div class="row">
@@ -93,40 +92,5 @@ const blogData = {
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-col">
-                    <h4>Logopedie Brno</h4>
-                    <p>Mgr. Jitka Rotscheinová</p>
-                    <ul>
-                        <li><a href="/">Úvod</a></li>
-                        <li><a href="/o-mne">O mně</a></li>
-                        <li><a href="/co-nabízím">Co nabízím</a></li>
-                        <li><a href="/vzdelani">Vzdělání</a></li>
-                        <li><a href="/ceník">Ceník</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/kontakt">Kontakt</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontakt:</h4>
-                    <p>Mgr. Jitka Rotscheinová<br>Logoped, speciální pedagog</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Sledujte nás:</h4>
-                    <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78" class="fb-xfbml-parse-ignore">
-                            <a href="https://www.facebook.com/profile.php?id=100087607171420&rdid=pN6WRxcjymjBFf78">Logopedie v domácím prostředí</a>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                © 2024 Mgr. Jitka Rotscheinová. Všechna práva vyhrazena.
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
