@@ -138,9 +138,28 @@ body img {
 #sp-top {
   position: relative;
   z-index: 999;
+  background: #fff;
 }
 
-#sp-top > .row {
+/* Blue angled ribbon: full-bleed from the left edge, ending at 75% of the viewport */
+#sp-top::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 75vw;
+  background-color: var(--maincolor);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 42px) 100%, 0 100%);
+  content: '';
+  z-index: 0;
+}
+
+#sp-top > .container {
+  position: relative;
+  z-index: 1;
+}
+
+#sp-top .row {
   align-items: center !important;
 }
 
@@ -154,18 +173,6 @@ body img {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
-}
-
-/* The angled blue band behind the contact details */
-.main-header__top-left::before {
-  position: absolute;
-  top: -5px;
-  left: -9999999px;
-  bottom: 0;
-  right: 0;
-  border-bottom: 65px solid var(--maincolor);
-  border-right: 42px solid transparent;
-  content: '';
 }
 
 .main-header__top-address {
@@ -257,12 +264,12 @@ body img {
 #sp-header .logo {
   display: block;
   height: auto;
-  padding-top: 33px;
-  padding-bottom: 33px;
+  padding-top: 23px;
+  padding-bottom: 23px;
 }
 
 #sp-header .logo img {
-  height: 44px;
+  height: 64px;
   width: auto;
 }
 
@@ -391,7 +398,7 @@ body img {
   background-color: var(--maincolor);
   background-size: cover;
   background-position: center;
-  padding: 192px 0 191px;
+  padding: 24px 0 20px;
 }
 
 .sp-page-title::before {
@@ -411,10 +418,10 @@ body img {
 }
 
 .sp-page-title .sp-page-title-heading {
-  font-size: 60px;
-  line-height: 1em;
+  font-size: 34px;
+  line-height: 1.25em;
   font-weight: 700;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   color: #ffffff;
   position: relative;
   z-index: 9;
@@ -441,7 +448,7 @@ body img {
 
 .sp-page-title .breadcrumb > li > a {
   color: #ffffff;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .sp-page-title .breadcrumb > li > a:hover {
@@ -449,7 +456,7 @@ body img {
 }
 
 .sp-page-title .breadcrumb > .active span {
-  font-size: 20px;
+  font-size: 15px;
   color: #ffffff;
 }
 
@@ -495,6 +502,7 @@ body img {
 #sp-footer .sppb-row-column {
   position: relative;
   width: 100%;
+  min-width: 0;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -513,6 +521,17 @@ body img {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   margin-bottom: 15px;
+}
+
+#sp-footer .footer-top h4.sppb-addon-title,
+#sp-footer .footer-top h5.sppb-addon-title {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+#sp-footer .footer-top h6.sppb-addon-title {
+  font-size: 15px;
+  line-height: 1.9;
 }
 
 #sp-footer .footer-top ul li {
@@ -1073,6 +1092,10 @@ body img {
 }
 
 @media (max-width: 991px) {
+  #sp-top::before {
+    width: 100%;
+  }
+
   #offcanvas-toggler {
     margin-right: 15px;
   }
@@ -1086,7 +1109,7 @@ body img {
   }
 
   .sp-page-title .sp-page-title-heading {
-    font-size: 40px;
+    font-size: 28px;
   }
 
   #sp-footer .footer-top .footer-col {
@@ -1098,22 +1121,26 @@ body img {
 
 @media (max-width: 768px) {
   .sp-page-title {
-    padding: 117px 0;
+    padding: 16px 0 14px;
   }
 
   .sp-page-title .sp-page-title-heading {
-    font-size: 35px;
+    font-size: 24px;
   }
 
   .sp-page-title .breadcrumb > li > a,
   .sp-page-title .breadcrumb > li + li::before,
   .sp-page-title .breadcrumb > .active span {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   #sp-header .logo {
     padding-top: 20px;
     padding-bottom: 20px;
+  }
+
+  #sp-header .logo img {
+    height: 48px;
   }
 
   .article {
@@ -1144,11 +1171,11 @@ body img {
   }
 
   .sp-page-title .sp-page-title-heading {
-    font-size: 28px;
+    font-size: 21px;
   }
 
-  .logo-image {
-    height: 36px;
+  #sp-header .logo img {
+    height: 40px;
   }
 }
 
@@ -1308,9 +1335,8 @@ body img {
 
 /* Icon bullet list (used on "Co nabízím", "Ceník", "Vzdělání") */
 .icon-list > li {
-  position: relative;
   padding-left: 25px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
   font-size: 18px;
   font-weight: 500;
 }
@@ -1319,14 +1345,19 @@ body img {
   margin-bottom: 0;
 }
 
-.icon-list > li .icon-maps-and-flags {
-  color: var(--maincolor);
-  font-size: 15px;
-  padding-right: 5px;
-}
-
-.icon-maps-and-flags::before {
+.icon-list > li::before {
+  display: inline-block;
+  width: 25px;
+  margin-left: -25px;
   content: '\e916';
+  color: var(--maincolor);
+  font-family: 'icomoon';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  text-align: center;
 }
 
 /* Education page */
@@ -1391,10 +1422,6 @@ body img {
   content: ':';
 }
 
-.edu-col-right .icon-list > li {
-  text-indent: -8px;
-}
-
 .edu-col-right .icon-list > li strong {
   font-weight: 700;
 }
@@ -1437,6 +1464,11 @@ body img {
 
 .pricing-table.sppb-table td {
   vertical-align: top;
+}
+
+.cenik-notes-title {
+  margin-top: 58px;
+  margin-bottom: 6px;
 }
 
 /* Kontakt page */

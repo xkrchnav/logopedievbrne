@@ -14,38 +14,40 @@ const {
 } = Astro.props;
 ---
 <section id="sp-top">
-  <div class="row">
-    <div id="sp-top1" class="col-lg-12">
-      <div class="sp-column">
-        <div class="sp-module">
-          <div class="sp-module-content">
-            <div class="main-header__top-left">
-              <ul class="main-header__top-address">
-                <li>
-                  <div class="icon">
-                    <span class="icon-email" aria-hidden="true"></span>
-                  </div>
-                  <div class="text">
-                    <p><a href={`mailto:${email}`}>{email}</a></p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span class="icon-wall-clock" aria-hidden="true"></span>
-                  </div>
-                  <div class="text">
-                    <p>{hours}</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span class="icon-user" aria-hidden="true"></span>
-                  </div>
-                  <div class="text">
-                    <p>{phone}</p>
-                  </div>
-                </li>
-              </ul>
+  <div class="container">
+    <div class="row">
+      <div id="sp-top1" class="col-lg-12">
+        <div class="sp-column">
+          <div class="sp-module">
+            <div class="sp-module-content">
+              <div class="main-header__top-left">
+                <ul class="main-header__top-address">
+                  <li>
+                    <div class="icon">
+                      <span class="icon-email" aria-hidden="true"></span>
+                    </div>
+                    <div class="text">
+                      <p><a href={`mailto:${email}`}>{email}</a></p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <span class="icon-wall-clock" aria-hidden="true"></span>
+                    </div>
+                    <div class="text">
+                      <p>{hours}</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <span class="icon-user" aria-hidden="true"></span>
+                    </div>
+                    <div class="text">
+                      <p>{phone}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
